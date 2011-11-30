@@ -14,7 +14,7 @@ class WaitForConsultationCompletedHandler extends EventHandler {
 		def patient = Patient.findByPatientID(patientId)
 		patient.appendEvent(event)
 		patient.save()
-		log.info("event ${event.eventName} is processed")
+		
 		return null;
 	}
 
