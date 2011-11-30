@@ -16,7 +16,9 @@ beans = {
 		
 	}
 	
-	triagescoreHandler(com.pfm.handler.TriageScoreHandler){
-	
-	}
+	triagescoreHandler(com.pfm.handler.TriageScoreHandler){}
+	patientregisteredHandler(com.pfm.handler.PatientRegisteredHandler){}
+	waitforconsultationHandler(com.pfm.handler.WaitForConsultationHandler){}
+	waitforconsultationcompletedHandler(com.pfm.handler.WaitForConsultationCompletedHandler){}
+	consultationstartedHandler(com.pfm.handler.ConsultationStartedHandler){}
 }

@@ -5,22 +5,26 @@ class Patient {
 	String patientID
 	PatientState currentState
 	Event lastEventReceived
+	String roomID
 	Map props = [:]
-	List states
-	List events
+	List states = []
+	List events = []
 	
 	static hasMany = [states:PatientState,events:Event]
 	
 	static constraints = {
+		patientID()
+		roomID(nullable:true)
+		currentState()
 		lastEventReceived(nullable:true)
-		props(nullable:true)
 		states(nullable:true)
 		events(nullable:true)
+		props(nullable:true)
 	}
 	
 
 	void terminateCurrentState(Date ts){
-	  currentState.setEndTime(ts);
+	  currentState?.setEndTime(ts);
 	}
 	
 	void startCurrentState(Date ts){
@@ -32,16 +36,21 @@ class Patient {
 	  setCurrentState(newState,ts);
 	}
 	
-	void setCurrentState(Patient newState, Date ts){
+	void setCurrentState(PatientState newState, Date ts){
 	  currentState = newState;
 	  startCurrentState(ts);
 	  states.add(currentState);
 	}
 	
-	void appendEvents(Event event){
+	public void appendEvent(Event event){
 	  events.add(event)
 	  lastEventReceived  = event
 	}
 	
-
+//	public void appendState(PatientState newState){
+//		states.add(newState)
+//		currentState = newState
+//	}
+	
+	String toString() {"${this.patientID}"}
 }

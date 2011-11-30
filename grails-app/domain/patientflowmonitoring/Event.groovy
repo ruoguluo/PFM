@@ -3,12 +3,15 @@ package patientflowmonitoring
 class Event {
 	
 	enum EventName{
-		WitForConsultation,
+		Triage,
+		Registered,
+		WaitForConsultation,
+		WaitForConsultationCompleted,
 		ConsultationStarted,
 		ConsultationCompleted,
 		WaitForOrderExecution,
 		OrderExecutionCompleted,
-		WaitForConsultation,
+		WaitForConsultation2,
 		WaitForBed,
 		WaitForTransport,
 		PatientTransportStarted,
@@ -16,9 +19,18 @@ class Event {
 	}
 	
 	EventName eventName
-	Date ts
-	Map eventAttributes
+	Date timeStamp
+	Map eventAttrs = [:]
+	Patient patient;
+	
+	static belongesTo = [patient:Patient]
 
     static constraints = {
+		patient()
+		eventName()
+		eventAttrs(nullable:true)
+		timeStamp(nullable:true)
     }
+	
+	String toString(){"${this.eventName}"}
 }

@@ -18,16 +18,19 @@ class PatientState {
 		IN_BED}
 	
 	PatientStateName stateName;
-	//Patient patient;
+	Patient patient;
 	Date startTime;
 	Date endTime;
-	Map stateAttributes;
+	Map stateAttributes=[:];
 	
-	//static belongesTo = [patient:Patient]
+	static belongesTo = [patient:Patient]
 
     static constraints = {
+		stateName()
 		startTime(nullable:true)
 		endTime(nullable:true)
 		stateAttributes(nullable:true)
     }
+	
+	String toString() {"${this.stateName}"}
 }

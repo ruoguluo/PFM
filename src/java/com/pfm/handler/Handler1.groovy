@@ -1,12 +1,9 @@
 package com.pfm.handler
 
-class Handler1 extends EventHandler {
+import java.util.Map;
 
-	@Override
-	public Object Handle(Map msg) {
-		// TODO Auto-generated method stub
-		print "Handler1 is called"
-		return null;
-	}
+class Handler1 extends EventHandler {
+//
+	def process(Map props){}
 
 }
