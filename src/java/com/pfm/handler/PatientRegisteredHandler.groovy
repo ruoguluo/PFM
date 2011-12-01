@@ -13,12 +13,12 @@ public class PatientRegisteredHandler extends EventHandler {
 		
 //		log.info("PatientRegisteredHandler")
 		
-		log.info("patient id is ${patientId}")
-		def patient = Patient.findByPatientID(patientId)
-		log.info("patient is ${patient}")
-		
-		patient.appendEvent(event)
-		patient.save()
+//		log.info("patient id is ${patientId}")
+//		def patient = Patient.findByPatientID(patientId)
+//		log.info("patient is ${patient}")
+//		
+//		patient.appendEvent(event)
+//		patient.save()
 		
 		return null;
 	}

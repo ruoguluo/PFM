@@ -14,15 +14,15 @@ class WaitForConsultationHandler extends EventHandler {
 		
 		event.eventName = EventName.WaitForConsultation
 		
-		def patient = Patient.findByPatientID(patientId)
-		log.info("patient is ${patient}")
+//		def patient = Patient.findByPatientID(patientId)
+//		log.info("patient is ${patient}")
 		
 		def patientState = new PatientState()
 		patientState.stateName = PatientStateName.WAIT_FOR_CONSULTATION
 		
 		patient.setCurrentState(patientState,null)
-		patient.appendEvent(event)
-		patient.save()
+//		patient.appendEvent(event)
+//		patient.save()
 		
 		return null;
 	}

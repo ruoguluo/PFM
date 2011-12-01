@@ -11,9 +11,9 @@ class WaitForConsultationCompletedHandler extends EventHandler {
 	public Object process(Map props) {
 
 		event.eventName = EventName.WaitForConsultationCompleted
-		def patient = Patient.findByPatientID(patientId)
-		patient.appendEvent(event)
-		patient.save()
+//		def patient = Patient.findByPatientID(patientId)
+//		patient.appendEvent(event)
+//		patient.save()
 		
 		return null;
 	}

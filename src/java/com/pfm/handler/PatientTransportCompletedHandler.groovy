@@ -12,17 +12,11 @@ class PatientTransportCompletedHandler extends EventHandler {
 	@Override
 	public Object process(Map props) {
 		
-		event.eventName = EventName.WaitForConsultation
-		
-		def patient = Patient.findByPatientID(patientId)
-		log.info("patient is ${patient}")
+		event.eventName = EventName.PatientTransportCompleted
 		
 		def patientState = new PatientState()
-		patientState.stateName = PatientStateName.WAIT_FOR_CONSULTATION
-		
+		patientState.stateName = PatientStateName.WAIT_FOR_TRANSPORT_COMPLETED
 		patient.setCurrentState(patientState,null)
-		patient.appendEvent(event)
-		patient.save()
 		
 		return null;
 	}

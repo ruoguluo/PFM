@@ -5,7 +5,7 @@ import java.util.Map;
 import patientflowmonitoring.Patient;
 import patientflowmonitoring.PatientState;
 import patientflowmonitoring.Event.EventName;
-import patientflowmonitoring.PatientState.PatientStateName;;
+import patientflowmonitoring.PatientState.PatientStateName;
 
 class ConsultationStartedHandler extends EventHandler {
 
@@ -14,14 +14,14 @@ class ConsultationStartedHandler extends EventHandler {
 		
 		event.eventName = EventName.ConsultationStarted
 		
-		def patient = Patient.findByPatientID(patientId)
+//		def patient = Patient.findByPatientID(patientId)
 		def patientState = new PatientState()
 		patientState.stateName = PatientStateName.IN_CONSULTATION
 		patientState.stateAttributes.put ('ProviderId', props['Provider_ID'])
 		
 		patient.setCurrentState(patientState,null)
-		patient.appendEvent(event)
-		patient.save()
+//		patient.appendEvent(event)
+//		patient.save()
 		
 		return null;
 	}

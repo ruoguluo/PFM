@@ -15,7 +15,8 @@ class PatientState {
 		WAIT_FOR_BED,
 		WAIT_FOR_TRANSPORT,
 		TRANSPORT,
-		IN_BED}
+		IN_BED,
+		DISCHARGED}
 	
 	PatientStateName stateName;
 	Patient patient;

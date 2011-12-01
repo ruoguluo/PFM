@@ -12,16 +12,7 @@ class ConsultationCompletedHandler extends EventHandler {
 	@Override
 	public Object process(Map props) {
 		
-		event.eventName = EventName.ConsultationStarted
-		
-		def patient = Patient.findByPatientID(patientId)
-		def patientState = new PatientState()
-		patientState.stateName = PatientStateName.IN_CONSULTATION
-		patientState.stateAttributes.put ('ProviderId', props['Provider_ID'])
-		
-		patient.setCurrentState(patientState,null)
-		patient.appendEvent(event)
-		patient.save()
+		event.eventName = EventName.ConsultationCompleted
 		
 		return null;
 	}

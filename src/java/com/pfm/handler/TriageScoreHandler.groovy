@@ -27,16 +27,16 @@ class TriageScoreHandler extends EventHandler {
 //			log.info('patientState not saved')
 //		}
 		
-		def patient = new Patient(patientID:patientId)
+		patient = new Patient(patientID:patientId)
 		//patient.currentState = patientState
 		patient.setCurrentState(patientState, null)
-		patient.appendEvent(event)
-		
-		if(patient.save()){
-			log.info('patient saved')
-		}else{
-			log.info('patient not saved')
-		}
+//		patient.appendEvent(event)
+//		
+//		if(patient.save()){
+//			log.info('patient saved')
+//		}else{
+//			log.info('patient not saved')
+//		}
 		
 //		def bed = new Bed(bedId:'abcd')
 //		println bed.save()
