@@ -1,0 +1,31 @@
+event:TriageScore,timestamp:2011-11-11/03-30-00,Provider _ID:Nurse745774,CTAS:2,Patient_ID:Pa123456
+event:PatientRegistered,RFTag_ID:Tag123Patient,timestamp:2011-11-11T03:40:00,Room_ID:Room12,Patient_ID:Pa123456
+event:WaitForConsultation,timestamp:2011-11-11T04:00:00,Patient_ID:Pa123456
+event:WaitForConsultationCompleted,timestamp:2011-11-11T04:20:00,Patient_ID:Pa123456
+event:ConsultationStarted,timestamp:2011-11-11T04:20:00,Provider_ID:Phy777777,Patient_ID:Pa123456
+event:OrderRequest,Order_ID:Order1111,OrderType:ECG,Provider_ID:Phy777777,timestamp:2011-11-11T04:30:00,Patient_ID:Pa123456
+event:OrderRequest,Order_ID:Order1112,OrderType:BloodSample,Provider_ID:Phy777777,timestamp:2011-11-11T04:30:00,Patient_ID:Pa123456
+event:OrderRequest,Order_ID:Order1113,OrderType:BloodAnalysis,Provider_ID:Phy777777,timestamp:2011-11-11T04:30:00,Patient_ID:Pa123456
+event:ConsultationCompleted,timestamp:2011-11-11T04:40:00,Provider_ID:Phy777777,Patient_ID:Pa123456
+event:WaitForOrderExecution,timestamp:2011-11-11T04:40:00,Patient_ID:Pa123456
+event:OrderRequestCompleted,Order_ID:Order1111,OrderType:ECG,Provider_ID:Nurse121212,timestamp:2011-11-11T05:05:00,Patient_ID:Pa123456
+event:OrderRequestCompleted,Order_ID:Order1112,OrderType:BloodSample,Provider_ID:Nurse121212,timestamp:2011-11-11T05:08:00,Patient_ID:Pa123456
+event:OrderRequestCompleted,Order_ID:Order1113,OrderType:BloodAnalysis,Provider_ID:Nurse121212,timestamp:2011-11-11T05:40:00,Patient_ID:Pa123456
+event:OrderExecutionCompleted,timestamp:2011-11-11T05:40:00,Provider_ID:Nurse121212,Patient_ID:Pa123456
+event:WaitForConsultation,timestamp:2011-11-11T05:41:00,Patient_ID:Pa123456
+event:WaitForConsultationCompleted,timestamp:2011-11-11T06:05:00,Patient_ID:Pa123456
+event:ConsultationStarted,timestamp:2011-11-11T06:05:00,Provider_ID:Phy777777,Patient_ID:Pa123456
+event:BedRequest,timestamp:2011-11-11T06:15:00,Provider_ID:Phy777777,Unit_ID:CCU,Patient_ID:Pa123456
+event:OrderRequest,Order_ID:Order1162 2011-11-11T06:20:00,OrderType:Angiogram,Provider_ID:Phy777777,Patient_ID:Pa123456
+event:OrderRequest,Order_ID:Order1163,OrderType:PCI,Provider_ID:Phy777777,timestamp:2011-11-11T06:20:00,Patient_ID:Pa123456
+event:ConsultationCompleted,timestamp:2011-11-11T06:35:00,Provider_ID:Phy777777,Patient_ID:Pa123456
+event:PatientAdmittedWithNoBed,timestamp:2011-11-11T06:35:00,Patient_ID:Pa123456
+event:WaitForBed,timestamp:2011-11-11T06:35:00,Unit_ID:CCU,Patient_ID:Pa123456
+event:Discharge,timestamp:2011-11-11T06:50:00,Provider_ID:Phy666666,Patient_ID:Pa111111
+event:PatientAdmittedWithBed,Bed_ID:Bed207,timestamp:2011-11-11T08:55:00,Patient_ID:Pa123456
+event:WaitedForBedCompleted,timestamp:2011-11-11T09:05:00,Unit_ID:CCU,Patient_ID:Pa123456
+event:PatientTransportRequest,Unit_ID:CCU,timestamp:2011-11-11T09:05:00,Transport_ID:Transporter147258,Patient_Id:Pa123456
+event:WaitForTransport,timestamp:2011-11-11T09:05:00,Unit_ID:CCU,Patient_ID:Pa123456
+event:WaitForTransportCompleted,timestamp:2011-11-11T09:30:00,Unit_ID:CCU,Patient_ID:Pa123456
+event:PatientTransportStarted,Unit_ID:CCU,timestamp:2011-11-11T09:30:00,Transport_ID:Transporter147258,Patient_Id:Pa123456
+event:PatientTransportCompleted,Unit_ID:CCU,timestamp:2011-11-11T09:40:00,Transport_ID:Transporter147258,Patient_Id:Pa123456
