@@ -15,7 +15,7 @@ class PatientTransportCompletedHandler extends EventHandler {
 		event.eventName = EventName.PatientTransportCompleted
 		
 		def patientState = new PatientState()
-		patientState.stateName = PatientStateName.WAIT_FOR_TRANSPORT_COMPLETED
+		patientState.stateName = PatientStateName.IN_BED
 		patient.setCurrentState(patientState,null)
 		
 		return null;

@@ -19,6 +19,7 @@ abstract class EventHandler {
 	def Handle(Map props){
 		event = new Event()
 		event.eventAttrs = props
+		event.timeStamp = Date.parse ("yyyy-MM-dd/HH-mm-ss", props['timestamp'])
 		patientId = props['Patient_ID']
 		patient = Patient.findByPatientID(patientId)
 		if (patient){

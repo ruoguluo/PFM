@@ -14,10 +14,6 @@ class OrderExecutionCompletedHandler extends EventHandler {
 		
 		event.eventName = EventName.OrderExecutionCompleted
 		
-		def patientState = new PatientState()
-		patientState.stateName = PatientStateName.WAIT_FOR_ORDER_EXECUTION
-		patient.setCurrentState(patientState,null)
-		
 		return null;
 	}
 

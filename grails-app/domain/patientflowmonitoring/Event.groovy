@@ -2,8 +2,6 @@ package patientflowmonitoring
 
 class Event {
 	
-	String eventId = "" + new Date()
-	
 	enum EventName{
 		Triage,
 		Registered,
@@ -13,6 +11,7 @@ class Event {
 		ConsultationCompleted,
 		OrderRequest,
 		WaitForOrderExecution,
+		OrderRequestCompleted,
 		OrderExecutionCompleted,
 		WaitForConsultation2,
 		BedRequest,
@@ -30,27 +29,18 @@ class Event {
 	}
 	
 	EventName eventName
-	Date timeStamp = new Date()
+	Date timeStamp
 	Map eventAttrs = [:]
 	Patient patient;
 	
 	static belongesTo = [patient:Patient]
 
     static constraints = {
-		event_id()
 		patient()
 		eventName(nullable:true)
 		eventAttrs(nullable:true)
 		timeStamp(nullable:true)
     }
 	
-	static mapping = {
-		//id column:'event_id',generator:'hilo',params:[table:'hi_value',column:'next_value',max_lo:100]
-	}
-	
-//	static mapping={
-//		id generator:"hilo"
-//	}
-	
-	//String toString(){"${this.eventName}_${this.id}"}
+	String toString(){"${this.eventName}"}
 }

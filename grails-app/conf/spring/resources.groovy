@@ -22,18 +22,19 @@ beans = {
 	waitforconsultationcompletedHandler(com.pfm.handler.WaitForConsultationCompletedHandler){}
 	consultationstartedHandler(com.pfm.handler.ConsultationStartedHandler){}
 	orderrequestHandler(com.pfm.handler.OrderRequestHandler){}
-	ConsultationCompleted(com.pfm.handler.ConsultationCompletedHandler){}
-	WaitForOrderExecution(com.pfm.handler.WaitForOrderExecutionHandler){}
-	OrderExecutionCompleted(com.pfm.handler.OrderExecutionCompletedHandler){}
-	BedRequest(com.pfm.handler.BedRequestHandler){}
-	PatientAdmittedWithNoBed(com.pfm.handler.PatientAdmittedWithNoBedHandler){}
-	WaitForBed(com.pfm.handler.WaitForBedHandler){}
-	Discharge(com.pfm.handler.DischargeHandler){}
-	PatientAdmittedWithBed(com.pfm.handler.PatientAdmittedWithBedHandler){}
-	WaitedForBedCompleted(com.pfm.handler.WaitedForBedCompletedHandler){}
-	PatientTransportRequest(com.pfm.handler.PatientTransportRequestHandler){}
-	WaitForTransport(com.pfm.handler.WaitForTransportHandler){}
-	WaitForTransportCompleted(com.pfm.handler.WaitForTransportCompletedHandler){}
-	PatientTransportStarted(com.pfm.handler.PatientTransportStartedHandler){}
-	PatientTransportCompleted(com.pfm.handler.PatientTransportCompletedHandler){}
+	consultationcompletedHandler(com.pfm.handler.ConsultationCompletedHandler){}
+	waitfororderexecutionHandler(com.pfm.handler.WaitForOrderExecutionHandler){}
+	orderrequestcompletedHandler(com.pfm.handler.OrderRequestCompletedHandler){}
+	orderexecutioncompletedHandler(com.pfm.handler.OrderExecutionCompletedHandler){}
+	bedrequestHandler(com.pfm.handler.BedRequestHandler){}
+	patientadmittedwithnobedHandler(com.pfm.handler.PatientAdmittedWithNoBedHandler){}
+	waitforbedHandler(com.pfm.handler.WaitForBedHandler){}
+	dischargeHandler(com.pfm.handler.DischargeHandler){}
+	patientadmittedwithbedHandler(com.pfm.handler.PatientAdmittedWithBedHandler){}
+	waitedforbedcompletedHandler(com.pfm.handler.WaitedForBedCompletedHandler){}
+	patienttransportrequestHandler(com.pfm.handler.PatientTransportRequestHandler){}
+	waitfortransportHandler(com.pfm.handler.WaitForTransportHandler){}
+	waitfortransportcompletedHandler(com.pfm.handler.WaitForTransportCompletedHandler){}
+	patienttransportstartedHandler(com.pfm.handler.PatientTransportStartedHandler){}
+	patienttransportcompletedHandler(com.pfm.handler.PatientTransportCompletedHandler){}
 }
