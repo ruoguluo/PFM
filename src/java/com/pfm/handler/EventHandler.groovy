@@ -22,9 +22,13 @@ abstract class EventHandler {
 		event.timeStamp = createTimeStamp(props['timestamp'])
 		patientId = props['Patient_ID']
 		patient = Patient.findByPatientID(patientId)
-		if (patient){
-			patient = patient.merge()
+		if (!patient){
+			patient = new Patient(patientID:patientId)
 		}
+
+/*		if (patient){
+			patient = patient.merge()
+		}*/
 		process(props)
 		
 		patient.appendEvent(event)

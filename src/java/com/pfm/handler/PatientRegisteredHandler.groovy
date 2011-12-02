@@ -11,6 +11,8 @@ public class PatientRegisteredHandler extends EventHandler {
 
 		event.eventName = EventName.Registered
 		
+		patient.roomID = props['Room_ID']
+		
 //		log.info("PatientRegisteredHandler")
 		
 //		log.info("patient id is ${patientId}")

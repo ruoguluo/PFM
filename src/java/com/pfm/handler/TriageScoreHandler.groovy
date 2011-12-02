@@ -21,14 +21,12 @@ class TriageScoreHandler extends EventHandler {
 		
 		def patientState = new PatientState()
 		patientState.stateName = PatientStateName.NEW
-		
-		patient = new Patient(patientID:patientId)
-		patient.setCurrentState(patientState, null)
+		updatePatientState(patientState)
 		
 		def Arrival arrival = new Arrival()
 		arrival.setTimeStamp(createTimeStamp(props['timestamp']))
 		arrival.save()
-		
+
 		return null;
 	}
 

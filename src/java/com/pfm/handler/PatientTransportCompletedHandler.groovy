@@ -18,6 +18,7 @@ class PatientTransportCompletedHandler extends EventHandler {
 		patientState.stateName = PatientStateName.IN_BED
 //		patient.setCurrentState(patientState,null)
 		updatePatientState(patientState)
+		patient.roomID = props['Unit_ID']
 		return null;
 	}
 
