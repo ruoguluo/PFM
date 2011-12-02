@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="acer" name="patientflowmonitoring.MessageServiceTests" tests="1" time="0.413" timestamp="2011-11-26T23:38:56">
-  <properties />
-  <testcase classname="patientflowmonitoring.MessageServiceTests" name="testSendPFMMsg" time="0.394" />
-  <system-out><![CDATA[--Output from testSendPFMMsg--
-]]></system-out>
-  <system-err><![CDATA[--Output from testSendPFMMsg--
-]]></system-err>
-</testsuite>
