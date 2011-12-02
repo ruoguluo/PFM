@@ -16,7 +16,8 @@ class PatientTransportStartedHandler extends EventHandler {
 		
 		def patientState = new PatientState()
 		patientState.stateName = PatientStateName.IN_TRANSPORT
-		patient.setCurrentState(patientState,null)
+//		patient.setCurrentState(patientState,null)
+		updatePatientState(patientState)
 		
 		return null;
 	}

@@ -1,5 +1,7 @@
 package patientflowmonitoring
 
+import groovy.time.TimeCategory
+
 class PatientState {
 	
 	enum PatientStateName {
@@ -22,16 +24,26 @@ class PatientState {
 	Patient patient;
 	Date startTime;
 	Date endTime;
+	int duration;
 	Map stateAttributes=[:];
 	
 	static belongesTo = [patient:Patient]
 
     static constraints = {
+		patient()
 		stateName()
 		startTime(nullable:true)
 		endTime(nullable:true)
+		duration(nullable:true)
 		stateAttributes(nullable:true)
     }
+	
+	def void setEndTime(Date ts){
+		endTime = ts
+		if (startTime!=null&&endTime!=null){
+			duration = TimeCategory.minus(endTime,startTime).toMilliseconds()/60000
+		}
+	}
 	
 	String toString() {"${this.stateName}"}
 }

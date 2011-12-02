@@ -6,10 +6,15 @@ class MessageController {
 	def scaffold = true
 	
 	def save = {
-		jmsService.send(queue:'msg.new',params.body)
+		//jmsService.send(queue:'msg.new',params.body)
 		jmsService.send(queue:'PFM_Event',params.body)
 		flash.message = "Message queued for persistence"
 		redirect(action: "list")
+	}
+	
+	def save2 = {
+		jmsService.send(queue:'PFM_Event',params.body)
+		render(text:"Ok", contentType:"text/html",encoding:"UTF-8")
 	}
 	
 	def update = {

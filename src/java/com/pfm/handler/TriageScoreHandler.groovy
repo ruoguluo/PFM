@@ -8,6 +8,7 @@ import patientflowmonitoring.PatientState;
 import patientflowmonitoring.PatientState.PatientStateName
 import patientflowmonitoring.Event;
 import patientflowmonitoring.Event.EventName;
+import patientflowmonitoring.Arrival;
 
 class TriageScoreHandler extends EventHandler {
 	
@@ -23,6 +24,10 @@ class TriageScoreHandler extends EventHandler {
 		
 		patient = new Patient(patientID:patientId)
 		patient.setCurrentState(patientState, null)
+		
+		def Arrival arrival = new Arrival()
+		arrival.setTimeStamp(createTimeStamp(props['timestamp']))
+		arrival.save()
 		
 		return null;
 	}

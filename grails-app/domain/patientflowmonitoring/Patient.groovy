@@ -12,8 +12,13 @@ class Patient {
 	
 	static hasMany = [states:PatientState,events:Event]
 	
+	static mapping = {
+		events cascade:'all-delete-orphan'
+		states cascade:'all-delete-orphan'
+	}
+	
 	static constraints = {
-		patientID()
+		patientID(unique:true)
 		roomID(nullable:true)
 		currentState()
 		lastEventReceived(nullable:true)
@@ -28,7 +33,7 @@ class Patient {
 	}
 	
 	void startCurrentState(Date ts){
-	  currentState.setStartTime(ts);
+	  currentState?.setStartTime(ts);
 	}
 	
 	void changeState(PatientState newState, Date ts){
@@ -37,9 +42,10 @@ class Patient {
 	}
 	
 	void setCurrentState(PatientState newState, Date ts){
+	  terminateCurrentState(ts);
 	  currentState = newState;
-	  startCurrentState(ts);
 	  states.add(currentState);
+	  startCurrentState(ts);
 	}
 	
 	public void appendEvent(Event event){

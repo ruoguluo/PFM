@@ -16,8 +16,8 @@ class WaitForTransportHandler extends EventHandler {
 		
 		def patientState = new PatientState()
 		patientState.stateName = PatientStateName.WAIT_FOR_TRANSPORT
-		patient.setCurrentState(patientState,null)
-		
+//		patient.setCurrentState(patientState,null)
+		updatePatientState(patientState)
 		return null;
 	}
 

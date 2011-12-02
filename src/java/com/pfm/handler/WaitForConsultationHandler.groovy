@@ -19,8 +19,8 @@ class WaitForConsultationHandler extends EventHandler {
 		
 		def patientState = new PatientState()
 		patientState.stateName = PatientStateName.WAIT_FOR_CONSULTATION
-		
-		patient.setCurrentState(patientState,null)
+		updatePatientState(patientState)
+		//patient.setCurrentState(patientState,createTimeStamp(props['timestamp']))
 //		patient.appendEvent(event)
 //		patient.save()
 		

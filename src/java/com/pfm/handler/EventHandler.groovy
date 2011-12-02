@@ -12,14 +12,14 @@ abstract class EventHandler {
 	
 	static final log = LogFactory.getLog(this)
 	
-	def event
-	def patient
-	def patientId
+	def Event event
+	def Patient patient
+	def String patientId
 	
 	def Handle(Map props){
 		event = new Event()
 		event.eventAttrs = props
-		event.timeStamp = Date.parse ("yyyy-MM-dd/HH-mm-ss", props['timestamp'])
+		event.timeStamp = createTimeStamp(props['timestamp'])
 		patientId = props['Patient_ID']
 		patient = Patient.findByPatientID(patientId)
 		if (patient){
@@ -45,6 +45,14 @@ abstract class EventHandler {
 //		}
 		
 		log.info("~~~event ${event.eventName} is processed~~~")
+	}
+	
+	def Date createTimeStamp(String ts){
+		return Date.parse ("yyyy-MM-dd/HH-mm-ss", ts)
+	}
+	
+	def void updatePatientState(PatientState ps){
+		patient.setCurrentState(ps,createTimeStamp(event.eventAttrs['timestamp']))
 	}
 	
 	def abstract process(Map props)
