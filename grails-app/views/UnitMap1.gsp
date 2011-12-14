@@ -50,8 +50,41 @@
 			"aoColumns": [
 				{ "sTitle": "Patient ID", "sClass": "center" },
 			]
-		} );	
+		} );
+
+		var marker2 = $('#marker').clone();
+		var map_top = $('#map').offset().top;
+		var map_left = $('#map').offset().left;
+		renderSpots()
+
+		$(window).resize(function() {
+			map_top = $('#map').offset().top;
+			map_left = $('#map').offset().left;
+			renderSpots();
+			});	
+
+		function renderSpots(){
+			marker2.id="marker2"
+				marker2.css('left', map_left+150)
+				marker2.css('top',  map_top+280)
+				marker2.css("display","inline")
+				marker2.attr("title","marker2")
+				marker2.bind('click',function(){
+					alert('Marker2 is clicked');
+					});
+				$('#td_map').append(marker2);
+				
+				$('#marker').css('left', map_left+100).css('top', map_top+290).show();
+		}
+
+		//alert(coord["ED1"]["top"]);
+		
 	} );	
+
+
+	var coord = {'ED1':{'top':290,'left':100},
+			'ED2':{'top':280,'left':150}};
+	
 	</script>
 </head>
 
@@ -67,9 +100,14 @@
       <div align="center"><h2>Patient List</h2></div>
 		<div id="dynamic"></div>
 		</td>
-      <td><img alt="plane1" src="images/plane1.png" /></td>
+      <td id="td_map"><img alt="plane1" src="images/plane1.png" height="614" width="850" id="map"/>
+      <img src="images/blue_spot.png" id="marker" 
+style="display: none;position: absolute;" title="marker"/></td>
     </tr>
   </tbody>
 </table>
+
+
+
 </body>
 </html>

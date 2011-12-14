@@ -1,4 +1,4 @@
-event:TriageScore,timestamp:2011-11-11/03-30-00,Provider _ID:Nurse745774,CTAS:2,Patient_ID:Pa123456
+event:TriageScore,timestamp:2011-11-11/03-30-00,Provider_ID:Nurse745774,CTAS:2,Patient_ID:Pa123456
 event:PatientRegistered,RFTag_ID:Tag123Patient,timestamp:2011-11-11/03-40-00,Room_ID:Room12,Patient_ID:Pa123456
 event:WaitForConsultation,timestamp:2011-11-11/04-00-00,Patient_ID:Pa123456
 event:WaitForConsultationCompleted,timestamp:2011-11-11/04-20-00,Patient_ID:Pa123456
