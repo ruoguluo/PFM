@@ -18,6 +18,7 @@ class DischargeHandler extends EventHandler {
 		def patientState = new PatientState()
 		patientState.stateName = PatientStateName.DISCHARGED
 //		patient.setCurrentState(patientState,null)
+		patient.roomID = ""
 		updatePatientState(patientState)
 		
 		def Discharge discharge = new Discharge()

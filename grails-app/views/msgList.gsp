@@ -12,7 +12,7 @@
 <%
 def i=0
 def msgs = []
-def file = new File('c:\\tmp\\testData.txt')
+def file = new File(application.getRealPath("/")+'/testData.txt')
 file.eachLine{line->
 	//println line
 	msgs.add(line)
