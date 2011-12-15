@@ -14,7 +14,7 @@
     <h1><a href="msgList.gsp" target="_blank">Message List for Testing</a></h1>
     <h1><a href="simpleMap.gsp" target="_blank">Simple Map for Rooms and Patients</a></h1>
     <h1><a href="patientDetails.gsp" target="_blank">Patient Details including events received and states even in</a></h1>
-    <h1><a href="waitTimeTable.gsp" target="_blank">Current wait time table</a></h1>
+    <h1><a href="patient/getCurrentPatientsWaitTime" target="_blank">Current wait time table</a></h1>
     <h1><a href="patient/getPatientMap" target="_blank">Unit map</a></h1>
   </body>
 </html>

@@ -82,6 +82,11 @@
 			'ED2':{'top':285,'left':140},
 			'CCU1':{'top':245,'left':480},
 			'CCU2':{'top':240,'left':535}};
+
+	function ed_click(){
+		//alert('clicked');
+		window.location="../unit/showUnitPerformance/CCU"
+	}
 	
 	</script>
 </head>
@@ -98,12 +103,15 @@
       <div align="center"><h2>Patient List</h2></div>
 		<div id="dynamic"></div>
 		</td>
-      <td id="td_map"><img alt="plane1" src="../images/plane1.png" height="614" width="850" id="map"/>
+      <td id="td_map"><img alt="plane1" src="../images/plane1.png" height="614" width="850" id="map" usemap="#unitmap" border="0"/>
       <img src="../images/blue_spot.png" id="marker" style="display: none;position: absolute;" title="marker"/></td>
     </tr>
   </tbody>
 </table>
 
+<map name="unitmap">
+	<area shape="poly" coords="80,185,360,155,400,500,80,545" onClick="javascript:ed_click()" title="ED Unit Area" /> 
+</map>
 
 
 </body>

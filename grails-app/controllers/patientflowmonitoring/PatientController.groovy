@@ -12,7 +12,6 @@ class PatientController {
 			notEqual("roomID","")
 		}
 		
-//		println(patientList.size())
 		
 		def patientMap = [:]
 		
@@ -32,8 +31,26 @@ class PatientController {
 		
 		render(view:"patientDetails",model:
 			[patient:patient])
+
+	}
+	
+	def getCurrentPatientsWaitTime = {
 		
-//		println patient
-		//render(text:"Ok", contentType:"text/html",encoding:"UTF-8")
+/*		def c = Patient.createCriteria()
+		
+		def patientList = c.list{
+			like("currentState","WAIT%")
+		}*/
+		def patients = []
+		def patientList = Patient.findAllByPatientIDIsNotNull()
+		patientList.each ({
+			if (it.currentState.toString().startsWith("WAIT")){
+				patients<<it
+			}
+		}
+		)
+		
+		//render(text:patients.size(), contentType:"text/html",encoding:"UTF-8")
+		render(view:"currentPatientsWaitTime",model:[patients:patients])
 	}
 }
