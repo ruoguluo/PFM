@@ -4,14 +4,12 @@ class PatientController {
 	
 	def scaffold = true
 
-    //def index = { }
-	
 	def getPatientMap = {
 		
 		def c = Patient.createCriteria()
 		
 		def patientList = c.list{
-			isNotNull("roomID")
+			notEqual("roomID","")
 		}
 		
 //		println(patientList.size())
@@ -26,5 +24,16 @@ class PatientController {
 		
 		render(view:"UnitMap1",model:
 			[mapping:patientMap])
+	}
+	
+	def getPatientDetails = {
+		
+		Patient patient = Patient.findByPatientID(params.id)
+		
+		render(view:"patientDetails",model:
+			[patient:patient])
+		
+//		println patient
+		//render(text:"Ok", contentType:"text/html",encoding:"UTF-8")
 	}
 }

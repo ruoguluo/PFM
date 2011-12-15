@@ -65,7 +65,8 @@
 				marker<%=i%>.css("display","inline")
 				marker<%=i%>.attr("title","<%=patientList[i]%>")
 				marker<%=i%>.bind('click',function(){
-					alert('Marker<%=i%> is clicked');
+					//alert('Marker<%=i%> is clicked');
+					window.location="getPatientDetails/<%=patientList[i]%>";
 					});
 				$('#td_map').append(marker<%=i%>);
 			<%}%>	

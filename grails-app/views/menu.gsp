@@ -15,6 +15,6 @@
     <h1><a href="simpleMap.gsp" target="_blank">Simple Map for Rooms and Patients</a></h1>
     <h1><a href="patientDetails.gsp" target="_blank">Patient Details including events received and states even in</a></h1>
     <h1><a href="waitTimeTable.gsp" target="_blank">Current wait time table</a></h1>
-    <h1><a href="UnitMap1.gsp" target="_blank">Unit map 1</a></h1>
+    <h1><a href="patient/getPatientMap" target="_blank">Unit map</a></h1>
   </body>
 </html>
