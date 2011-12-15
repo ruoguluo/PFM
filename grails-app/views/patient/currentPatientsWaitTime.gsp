@@ -25,7 +25,7 @@
 
 						def time1 = startTime.time%(86400000)
 						//System.out.println(time1)
-						dataSet<<"['${it}','${it.currentState}','${((time0-time1)/60000) as int}']"
+						dataSet<<"['${it}','${it.roomID}','${it.currentState}','${startTime}','${((time0-time1)/60000) as int}']"
 				})
 			%>
 			
@@ -37,9 +37,9 @@
 					"aaData": aDataSet,
 					"aoColumns": [
 						{ "sTitle": "Patient ID", "sClass": "center" },
-<%--						{ "sTitle": "Location", "sClass": "center" },--%>
+						{ "sTitle": "Location", "sClass": "center" },
 						{ "sTitle": "Waiting State", "sClass": "center" },
-<%--						{ "sTitle": "Start Time", "sClass": "center","sWidth":"200px" },--%>
+						{ "sTitle": "Start Time", "sClass": "center","sWidth":"200px" },
 						{ "sTitle": "Duration (minutes)", "sClass": "center","sWidth":"5%" }
 					]
 				} );	
