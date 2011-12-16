@@ -37,7 +37,11 @@
 	        "bAutoWidth": false,
 			"aaData": aDataSet,
 			"aoColumns": [
-				{ "sTitle": "Patient ID", "sClass": "center" },
+				{ "sTitle": "Patient ID", "sClass": "center",
+					"fnRender":function(oObj){
+						return "<a href='getPatientDetails/"+oObj.aData[0]+"'>"+oObj.aData[0]+"</a>";
+					}
+				},
 			]
 		} );
 		
@@ -80,12 +84,23 @@
 
 	var coord = {'ED1':{'top':290,'left':95},
 			'ED2':{'top':285,'left':140},
+			'ED3':{'top':285,'left':200},
+			'ED4':{'top':275,'left':250},
+			'ED5':{'top':270,'left':302},
+			'ED6':{'top':265,'left':362},
+			'ED7':{'top':529,'left':103},
+			'ED8':{'top':517,'left':150},
+			'ED9':{'top':505,'left':217},
+			'ED10':{'top':493,'left':267},
+			'ED11':{'top':480,'left':317},
+			'ED12':{'top':468,'left':367},
+			
 			'CCU1':{'top':245,'left':480},
 			'CCU2':{'top':240,'left':535}};
 
 	function ed_click(){
 		//alert('clicked');
-		window.location="../unit/showUnitPerformance/CCU"
+		window.location="../unit/showUnitPerformance/ED"
 	}
 	
 	</script>
@@ -103,8 +118,8 @@
       <div align="center"><h2>Patient List</h2></div>
 		<div id="dynamic"></div>
 		</td>
-      <td id="td_map"><img alt="plane1" src="../images/plane1.png" height="614" width="850" id="map" usemap="#unitmap" border="0"/>
-      <img src="../images/blue_spot.png" id="marker" style="display: none;position: absolute;" title="marker"/></td>
+      <td id="td_map"><img alt="plane1" src="<%=request.getContextPath() %>/images/plane1.png" height="614" width="850" id="map" usemap="#unitmap" border="0"/>
+      <img src="<%=request.getContextPath() %>/images/blue_spot.png" id="marker" style="display: none;position: absolute;" title="marker"/></td>
     </tr>
   </tbody>
 </table>

@@ -52,12 +52,12 @@ abstract class EventHandler {
 	}
 	
 	def Date createTimeStamp(String ts){
-		if (ts.startsWith("curdate")){
+		if (ts.startsWith("*")){
 			def c= new GregorianCalendar()
 			def year = c.get(Calendar.YEAR).toString()
 			def month = (c.get(Calendar.MONTH)+1).toString().padLeft(2,'0')
 			def date = c.get(Calendar.DATE).toString()
-			ts=ts.replace("today", "${year}-${month}-${date}")
+			ts=ts.replace("*", "${year}-${month}-${date}")
 		}
 		return Date.parse ("yyyy-MM-dd/HH-mm-ss", ts)
 	}
