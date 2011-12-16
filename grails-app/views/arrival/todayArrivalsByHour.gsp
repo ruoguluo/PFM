@@ -3,7 +3,9 @@
     R:
   	<%=mapping.size%>
   	<%
-	  	def ah = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	  	def ah = []
+		for (i in 0..23)
+			ah[i]=0
 	  
 		for (int i=0;i<mapping.size;i++){
 			//println ((List)(mapping.get(i)));

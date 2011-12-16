@@ -6,11 +6,11 @@
 		
 		<title>DataTables example</title>
 		<style type="text/css" title="currentStyle">
-			@import "../../css/demo_page.css";
-			@import "../../css/demo_table.css";
+			@import "<%=request.getContextPath() %>/css/demo_page.css";
+			@import "<%=request.getContextPath() %>/css/demo_table.css";
 		</style>
-		<script type="text/javascript" language="javascript" src="../../js/jquery.js"></script>
-		<script type="text/javascript" language="javascript" src="../../js/jquery.dataTables.js"></script>
+		<script type="text/javascript" language="javascript" src="<%=request.getContextPath() %>/js/jquery.js"></script>
+		<script type="text/javascript" language="javascript" src="<%=request.getContextPath() %>/js/jquery.dataTables.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			/* Data set - can contain whatever information you want */
 			

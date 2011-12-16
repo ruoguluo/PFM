@@ -7,11 +7,11 @@
   <title>Unit Map 1</title>
   <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
 	<style type="text/css" title="currentStyle">
-		@import "../css/demo_page.css";
-		@import "../css/demo_table.css";
+		@import "<%=request.getContextPath() %>/css/demo_page.css";
+		@import "<%=request.getContextPath() %>/css/demo_table.css";
 	</style>
-	<script type="text/javascript" language="javascript" src="../js/jquery.js"></script>
-	<script type="text/javascript" language="javascript" src="../js/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="<%=request.getContextPath() %>/js/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="<%=request.getContextPath() %>/js/jquery.dataTables.js"></script>
 	<script type="text/javascript" charset="utf-8">
 	
 	

@@ -7,14 +7,14 @@
 
 <title>DataTables example</title>
 <style type="text/css" title="currentStyle">
-@import "../../css/demo_page.css";
+@import "<%=request.getContextPath() %>/css/demo_page.css";
 
-@import "../../css/demo_table.css";
+@import "<%=request.getContextPath() %>/css/demo_table.css";
 </style>
 <script type="text/javascript" language="javascript"
-	src="../../js/jquery.js"></script>
+	src="<%=request.getContextPath() %>/js/jquery.js"></script>
 <script type="text/javascript" language="javascript"
-	src="../../js/jquery.dataTables.js"></script>
+	src="<%=request.getContextPath() %>/js/jquery.dataTables.js"></script>
 <script type="text/javascript" charset="utf-8">
 
 			console.info("<%=patient%>");
@@ -43,6 +43,7 @@
 				$('#events').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="event_table"></table>' );
 				$('#event_table').dataTable( {
 					"aaData": eventDataSet,
+					"aaSorting": [[ 1, "asc" ]],
 					"aoColumns": [
 						{ "sTitle": "Event data received" },
 						{ "sTitle": "Received Time", "sClass": "center" }
@@ -51,6 +52,7 @@
 				$('#states').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="state_table"></table>' );
 				$('#state_table').dataTable( {
 					"aaData": stateDataSet,
+					"aaSorting": [[ 1, "asc" ]],
 					"aoColumns": [
 						{ "sTitle": "State" },
 						{ "sTitle": "Start Time", "sClass": "center" },
@@ -74,11 +76,13 @@
 		</script>
 </head>
 <body id="dt_example">
+
 	<div id="container">
 		<div class="full_width big">Patient Info</div>
 
 		<%=patient%>
 		<h1>Clinical Info</h1>
+		<img src="<%=request.getContextPath() %>/images/clinicalPath.png"/>
 		<h1>Events Received</h1>
 		<div id="events"></div>
 		<div class="spacer"></div>
