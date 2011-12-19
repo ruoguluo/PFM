@@ -1,5 +1,7 @@
 package patientflowmonitoring
 
+import patientflowmonitoring.PatientState.PatientStateName
+
 class PatientController {
 	
 	def scaffold = true
@@ -35,22 +37,18 @@ class PatientController {
 	}
 	
 	def getCurrentPatientsWaitTime = {
-		
-/*		def c = Patient.createCriteria()
-		
-		def patientList = c.list{
-			like("currentState","WAIT%")
-		}*/
-		def patients = []
-		def patientList = Patient.findAllByPatientIDIsNotNull()
-		patientList.each ({
-			if (it.currentState.toString().startsWith("WAIT")){
-				patients<<it
+	
+		def patients = Patient.withCriteria(){
+			currentState{
+				or{
+					eq("stateName",PatientStateName.WAIT_FOR_CONSULTATION)
+					eq("stateName",PatientStateName.WAIT_FOR_ORDER_EXECUTION)
+					eq("stateName",PatientStateName.WAIT_FOR_BED)
+					eq("stateName",PatientStateName.WAIT_FOR_TRANSPORT)
+				}
 			}
 		}
-		)
-		
-		//render(text:patients.size(), contentType:"text/html",encoding:"UTF-8")
+
 		render(view:"currentPatientsWaitTime",model:[patients:patients])
 	}
 }
