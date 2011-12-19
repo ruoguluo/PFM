@@ -17,7 +17,7 @@
 	src="<%=request.getContextPath() %>/js/jquery.dataTables.js"></script>
 <script type="text/javascript" charset="utf-8">
 
-			console.info("<%=patient%>");
+			//console.info("<%=patient%>");
 
 			<%
 				def events = [];
@@ -55,7 +55,12 @@
 					"aaSorting": [[ 1, "asc" ]],
 					"aoColumns": [
 						{ "sTitle": "State" },
-						{ "sTitle": "Start Time", "sClass": "center" },
+						{ "sTitle": "Start Time", "sClass": "center",
+							"fnRender":function(oObj){
+								if (oObj.aData[1]=="null")
+									return 'N/A';
+								return oObj.aData[1];
+							} },
 						{ "sTitle": "End Time", "sClass": "center",
 							"fnRender":function(oObj){
 									if (oObj.aData[2]=="null")

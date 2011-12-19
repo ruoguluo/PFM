@@ -23,7 +23,7 @@
 		})
 		def roomList = mapping.keySet().toList();
 	%>
-	console.info("<%=patients%>")
+	//console.info("<%=patients%>")
 	var aDataSet = <%=patients%>;
 	
 	$(document).ready(function() {

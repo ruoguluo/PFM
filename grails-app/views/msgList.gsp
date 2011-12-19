@@ -45,6 +45,7 @@ var sendMsgs=function (){
 			data:{body:msgs_js[i]},
 		});	
 	}
+	//alert("done!")
 }
 
 var sendSomeMsgs=function(){
@@ -59,10 +60,35 @@ function loadTestCase(fileName){
 	//alert("why?")
 }
 
+
+
 $(document).ready(function() {
 
-	$('#all').click(sendMsgs)
-	$('#uptoCertainPoint').click(sendSomeMsgs)
+	$('#all').click(sendMsgs);
+	$('#uptoCertainPoint').click(sendSomeMsgs);
+
+	$('#loadingDiv')
+	.hide()  // hide it initially
+	.ajaxStart(function() {
+	    $(this).show();
+	})
+	.ajaxStop(function() {
+	    $(this).hide();
+	})
+	;
+
+	$('#loaded')
+	.hide()  // hide it initially
+	.ajaxStart(function() {
+	    $(this).hide();
+	})
+	.ajaxStop(function() {
+	    $(this).show();
+	})
+	;
+
+	
+	
 })
 
 </script>
@@ -80,7 +106,8 @@ Select a test case:</br>
 <div>Now you can send it one by one</div>
 <div>or by one click to send all in a sequence &nbsp; <button type="button" id="all">Click</button></div>
 <div>or to send till reach a certain check point:&nbsp;<input size=2 id="cp"/>&nbsp;<button type="button" id="uptoCertainPoint">Click</button></div>
-
+<div id="loadingDiv"><img src="<%=request.getContextPath() %>/images/spinner.gif"/></div>
+<div id="loaded">Sent</div>
 <g:while test="${i < msgs.size}">
    <g:form>
     <p> <%=i %>&nbsp;
