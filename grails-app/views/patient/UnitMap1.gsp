@@ -3,6 +3,7 @@
       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<nav:resources/>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <title>Unit Map 1</title>
   <meta name="generator" content="Amaya, see http://www.w3.org/Amaya/" />
@@ -106,10 +107,11 @@
 	</script>
 </head>
 
-<body>
+<body id="dt_example">
+<div id="container">
+<nav:render group="tabs"/>
 <h1>OSLER Unit Map</h1>
 
-<p> </p>
 
 <table border="1" style="width: 100%">
   <tbody>
@@ -128,6 +130,6 @@
 	<area shape="poly" coords="80,185,360,155,400,500,80,545" onClick="javascript:ed_click()" title="ED Unit Area" /> 
 </map>
 
-
+</div>
 </body>
 </html>

@@ -5,6 +5,12 @@ import patientflowmonitoring.PatientState.PatientStateName
 class PatientController {
 	
 	def scaffold = true
+	
+	static navigation = [
+		[group:'tabs',action:'getPatientMap', title:'Unit Map',order:0],
+		[action:'getPatientDetails', title:'Patient Details',order:5]
+	]
+	
 
 	def getPatientMap = {
 		
@@ -29,10 +35,13 @@ class PatientController {
 	
 	def getPatientDetails = {
 		
-		Patient patient = Patient.findByPatientID(params.id)
-		
-		render(view:"patientDetails",model:
-			[patient:patient])
+		if (params.id){
+			Patient patient = Patient.findByPatientID(params.id)
+			render(view:"patientDetails",model:
+				[patient:patient])
+		}else{
+			getPatientMap()
+		}
 
 	}
 	

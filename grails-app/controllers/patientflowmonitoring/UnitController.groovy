@@ -1,8 +1,14 @@
 package patientflowmonitoring
 
 class UnitController {
+	
+	static navigation = [
+		[group:'tabs',action:'showUnitPerformance', title:"Unit Performance",order:10]
+	]
 
 	def showUnitPerformance={
+		
+
 		
 		def unit = params.id
 		

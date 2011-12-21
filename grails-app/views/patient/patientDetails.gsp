@@ -1,6 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
+<nav:resources/>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" type="image/ico"
 	href="http://www.datatables.net/media/images/favicon.ico" />
@@ -83,8 +84,8 @@
 <body id="dt_example">
 
 	<div id="container">
-		<div class="full_width big">Patient Info</div>
-
+		<nav:render group="tabs"/>
+		<h1>Patient Info</h1>
 		<%=patient%>
 		<h1>Clinical Info</h1>
 		<img src="<%=request.getContextPath() %>/images/clinicalPath.png"/>
