@@ -49,23 +49,26 @@ var sendMsgs=function (){
 }
 
 var sendSomeMsgs=function(){
-	checkPoint=document.getElementById("cp").value
+	checkPoint=$("#cp").val()
 	sendMsgs()
 	checkPoint=<%=msgs.size-1%>
 }
 
 function loadTestCase(fileName){
-	//alert("load " + fileName);
 	window.location="<%=request.getContextPath() %>/msgList.gsp?fileName="+fileName;
-	//alert("why?")
 }
 
+var changeTestCase=function(){
+	//alert($('#testCase').val());
+	loadTestCase($('#testCase').val());
+}
 
 
 $(document).ready(function() {
 
 	$('#all').click(sendMsgs);
 	$('#uptoCertainPoint').click(sendSomeMsgs);
+	$('#testCase').change(changeTestCase);
 
 	$('#loadingDiv')
 	.hide()  // hide it initially
@@ -87,8 +90,6 @@ $(document).ready(function() {
 	})
 	;
 
-	
-	
 })
 
 </script>
@@ -97,11 +98,9 @@ $(document).ready(function() {
 <h1>Message List</h1>
 <div align="right">
 Select a test case:</br>
-<select onChange="loadTestCase(this.value)">
-<%files.each{ %>
-<option <%=it==fileName?"selected":""%>><%=it%></option>
-<%} %>
-</select>
+
+<g:select from="${files}" name="testCase" value="${fileName}"/>
+
 </div>
 <div>Now you can send it one by one</div>
 <div>or by one click to send all in a sequence &nbsp; <button type="button" id="all">Click</button></div>
