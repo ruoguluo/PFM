@@ -90,12 +90,12 @@
 		
 		<table>
 		<tr >
-			<td width="20%">
+			<td width="400px;">
 				Clinical Info
 					<%=clincalPathWay %>
 			</td>
 				
-			<td width="80%" valign="top">
+			<td width="400px;" valign="top">
 				<h1>Events Received</h1>
 				<div id="events"></div>
 				<div class="spacer"></div>
