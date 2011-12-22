@@ -58,6 +58,9 @@
 			<h1>Performance table</h1>
 			<div id="dynamic"></div>
 			<div class="spacer"></div>
+			<h1>Statistics</h1>
+			<g:include controller="arrival" action="getTodayArrivals" />
+			<g:include controller="admission" action="getAdmissionVsDischarge" />
 		</div>
 	</body>
 </html>

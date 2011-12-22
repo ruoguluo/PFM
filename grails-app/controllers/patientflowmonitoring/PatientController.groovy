@@ -7,8 +7,8 @@ class PatientController {
 	def scaffold = true
 	
 	static navigation = [
-		[group:'tabs',action:'getPatientMap', title:'Unit Map',order:0],
-		[action:'getPatientDetails', title:'Patient Details',order:5]
+		[group:'tabs',action:'getPatientMap', title:'Unit',order:0],
+		[action:'getPatientDetails', title:'Patient',order:5]
 	]
 	
 
@@ -35,10 +35,18 @@ class PatientController {
 	
 	def getPatientDetails = {
 		
+		
+		def file = new File(servletContext.getRealPath("/html/ClinicalPathway.html"))
+		String clincalpathWay = file.getText()
+		
 		if (params.id){
 			Patient patient = Patient.findByPatientID(params.id)
+			session.patient=patient
 			render(view:"patientDetails",model:
-				[patient:patient])
+				[patient:patient,clincalPathWay:clincalpathWay])
+		}else if(session.patient){
+		render(view:"patientDetails",model:
+			[patient:session.patient,clincalPathWay:clincalpathWay])
 		}else{
 			getPatientMap()
 		}

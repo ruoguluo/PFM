@@ -72,8 +72,8 @@
 }
 
 #dt_example a {
-	color: #0063DC;
-	text-decoration: none;
+	/*color: #0063DC;*/
+	/*text-decoration: none;*/
 }
 
 #dt_example a:hover {

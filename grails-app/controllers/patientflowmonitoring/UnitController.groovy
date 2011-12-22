@@ -3,14 +3,15 @@ package patientflowmonitoring
 class UnitController {
 	
 	static navigation = [
-		[group:'tabs',action:'showUnitPerformance', title:"Unit Performance",order:10]
+		[group:'tabs',action:'showUnitPerformance', title:"Report",order:10],
 	]
-
+	
 	def showUnitPerformance={
 		
-
-		
 		def unit = params.id
+		if (!unit){
+			unit = "ED"
+		}
 		
 		def c = Patient.createCriteria()
 		
@@ -23,4 +24,5 @@ class UnitController {
 		render(view:"unitPerformance",model:
 			[patients:patientList,unit:unit])
 	}
+	
 }

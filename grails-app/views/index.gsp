@@ -1,5 +1,6 @@
 <html>
     <head>
+    <nav:resources/>
         <title>Welcome to Grails</title>
         <meta name="layout" content="main" />
         <style type="text/css" media="screen">
@@ -51,6 +52,7 @@
         </style>
     </head>
     <body>
+    <nav:render group="tabs"/>
         <div id="nav">
             <div class="homePagePanel">
                 <div class="panelTop"></div>

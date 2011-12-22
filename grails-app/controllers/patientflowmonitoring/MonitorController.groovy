@@ -3,7 +3,12 @@ package patientflowmonitoring
 class MonitorController {
 	
 	def scaffold = true
-
-    //def index = { }
+	static navigation = [
+		[group:'tabs',action:'showGrails', title:"Grails",order:20]
+	]
+	
+	def showGrails={
+		redirect(uri:"/index.gsp")
+	}
 	
 }

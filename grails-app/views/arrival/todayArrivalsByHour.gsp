@@ -1,7 +1,5 @@
 <html>
   <head>
-    R:
-  	<%=mapping.size%>
   	<%
 	  	def ah = []
 		for (i in 0..23)
@@ -29,7 +27,7 @@
 			data.setValue(<%=h%>, 1, <%=ah[h]%>);
 		<% } %>
         
-        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_arrivals_div'));
         chart.draw(data, {width: 800, height: 600, title: 'Today Arrivals by Hour',
                           hAxis: {title: 'Time', titleTextStyle: {color: 'blue'}}
                          });
@@ -38,6 +36,6 @@
   </head>
 
   <body>
-    <div id="chart_div"></div>
+    <div id="chart_arrivals_div"></div>
   </body>
 </html>

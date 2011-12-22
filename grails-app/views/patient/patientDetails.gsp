@@ -85,15 +85,27 @@
 
 	<div id="container">
 		<nav:render group="tabs"/>
-		<h1>Patient Info</h1>
-		<%=patient%>
-		<h1>Clinical Info</h1>
-		<img src="<%=request.getContextPath() %>/images/clinicalPath.png"/>
-		<h1>Events Received</h1>
-		<div id="events"></div>
-		<div class="spacer"></div>
-		<h1>States</h1>
-		<div id="states"></div>
+		<h1 align="center">Patient Info:<%=patient%></h1>
+		
+		
+		<table>
+		<tr >
+			<td width="20%">
+				Clinical Info
+					<%=clincalPathWay %>
+			</td>
+				
+			<td width="80%" valign="top">
+				<h1>Events Received</h1>
+				<div id="events"></div>
+				<div class="spacer"></div>
+				<h1>States</h1>
+				<div id="states"></div>
+			</td>
+		</tr>
+		</table>
+
+
 	</div>
 </body>
 </html>
