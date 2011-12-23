@@ -37,9 +37,7 @@ class MessageService implements ApplicationContextAware{
 	@Queue(name='PFM_Event')
 	def PFM_EventArrive(msg){
 		log.info('what I received is ' + msg)
-		//ApplicationContext ctx = (ApplicationContext)session.getServletContext().getAttribute(GrailsApplicationAttributes.APPLICATION_CONTEXT);
 		def ctx = grailsApplication.mainContext
-//		log.info("ctx=" + ctx);
 		def props = processMsg(msg)
 		EventHandler h = ctx.getBean (props['event'].toLowerCase()+"Handler")
 		log.info("h=" + h)

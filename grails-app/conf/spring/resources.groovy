@@ -12,10 +12,6 @@ beans = {
 		connectionFactory = ref("jmsConnectionFactory")
 	}
 	
-	handler1(com.pfm.handler.Handler1){
-		
-	}
-	
 	triagescoreHandler(com.pfm.handler.TriageScoreHandler){}
 	patientregisteredHandler(com.pfm.handler.PatientRegisteredHandler){}
 	waitforconsultationHandler(com.pfm.handler.WaitForConsultationHandler){}

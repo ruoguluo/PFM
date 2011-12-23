@@ -13,15 +13,12 @@ class ArrivalController {
 		
 		def c = Arrival.createCriteria()
 		def results = c {
-//			eq("dayTag",dayTag)
 			projections {
 				groupProperty("hour")
 				rowCount()
 			}
 			order("hour")
 		}
-		//render(results)
-		//redirect(uri:"/todayArrivalsByHour.gsp",params:[mapping:results])
 		render(view:"todayArrivalsByHour", model:[mapping:results])
 	}
 }

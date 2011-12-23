@@ -14,7 +14,6 @@ class AdmissionController {
 		
 		def c1 = Admission.createCriteria()
 		def resultAdmission = c1 {
-//			eq("dayTag",dayTag)
 			projections {
 				groupProperty("hour")
 				rowCount()
@@ -24,14 +23,12 @@ class AdmissionController {
 		
 		def c2 = Discharge.createCriteria()
 		def resultDischarge = c2 {
-//			eq("dayTag",dayTag)
 			projections {
 				groupProperty("hour")
 				rowCount()
 			}
 			order("hour")
 		}
-		//render(resultAdmission+""+resultDischarge)
 		render(view:"admissionVsDischarge", model:[admission:resultAdmission, discharge:resultDischarge])
 	}
 	

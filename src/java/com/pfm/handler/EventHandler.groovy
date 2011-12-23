@@ -26,30 +26,15 @@ abstract class EventHandler {
 			patient = new Patient(patientID:patientId)
 		}
 
-/*		if (patient){
-			patient = patient.merge()
-		}*/
 		process(props)
 		
 		patient.appendEvent(event)
 		patient.save()
-		//patient = patient.merge()
-//		try{
-//			patient.save()
-//		}catch (org.hibernate.NonUniqueObjectException e){
-//			log.info("NonUniqueObjectException")
-//			patient.merge()
-//		}
-//		
-//		if (event.eventName == EventName.Triage){
-//			patient.save()
-//		}else{
-//			patient = patient.merge()
-//			patient.save()
-//		}
 		
 		log.info("~~~event ${event.eventName} is processed~~~")
 	}
+	
+	def abstract process(Map props)
 	
 	def Date createTimeStamp(String ts){
 		if (ts.startsWith("*")){
@@ -66,5 +51,4 @@ abstract class EventHandler {
 		patient.setCurrentState(ps,createTimeStamp(event.eventAttrs['timestamp']))
 	}
 	
-	def abstract process(Map props)
 }
