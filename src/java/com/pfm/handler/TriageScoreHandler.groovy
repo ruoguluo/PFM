@@ -14,20 +14,19 @@ class TriageScoreHandler extends EventHandler {
 	
 	def process(Map props){
 		
-		event.eventName = EventName.Triage
+		event.eventName = EventName.Triage  // assignment the event name value, which must be a predefined value in Event.EventName
 		
-		def patientId = props['Patient_ID']
-		log.info(patientId + " arrived TriageScoreHandler")
+		log.info(patientId + " arrived TriageScoreHandler") // for logging purpose only
 		
-		def patientState = new PatientState()
+		def patientState = new PatientState()				// Since this event will cause the state change of the patient, the following three lines are for updating patient state
 		patientState.stateName = PatientStateName.NEW
 		updatePatientState(patientState)
 		
-		def Arrival arrival = new Arrival()
+		def Arrival arrival = new Arrival()					// This event will add a new Arrival object into the PFM system for statistics. 
 		arrival.setTimeStamp(createTimeStamp(props['timestamp']))
 		arrival.save()
 
-		return null;
+		return null;	//No return value is needed
 	}
 
 }

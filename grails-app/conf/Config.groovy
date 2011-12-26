@@ -72,12 +72,12 @@ log4j = {
     //
     appenders {
         console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-        rollingFile name:'myAppender',maxFileSize:1024,file:'/tmp/pfm.log'
+        rollingFile name:'PFM_Appender',maxFileSize:1024,file:'/tmp/pfm.log'
         
     }
 	
 	root {
-		info 'stdout', 'myAppender'
+		info 'stdout', 'PFM_Appender'
 	}
 
     error  'org.codehaus.groovy.grails.web.servlet',  //  controllers

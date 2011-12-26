@@ -1,4 +1,4 @@
-CopyOfDataSourceataSource {
+ceataSource {
     pooled = true
     driverClassName = "org.hsqldb.jdbcDriver"
     username = "sa"
