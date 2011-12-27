@@ -6,16 +6,29 @@
 <link rel="shortcut icon" type="image/ico"
 	href="http://www.datatables.net/media/images/favicon.ico" />
 
-<title>DataTables example</title>
+<title>Patient Details</title>
 <style type="text/css" title="currentStyle">
 @import "<%=request.getContextPath() %>/css/demo_page.css";
 
 @import "<%=request.getContextPath() %>/css/demo_table.css";
 </style>
+
+<style type="text/css" media="screen">
+	body { font: 0.8em Arial, sans-serif; }
+	.menu { padding: 0; clear: both; }
+	.menu li { display: inline; }
+	.menu li a { background: #ccf; padding: 10px; float:left; border-right: 1px solid #ccf; border-bottom: none; text-decoration: none; color: #000; font-weight: bold;}
+	.menu li.active a { background: #eef; }
+	.content { float: left; clear: both; border: 1px solid #ccf; border-top: none; border-left: none; background: #eef; padding: 10px 20px 20px; width: 400px; }
+</style>
+
+
 <script type="text/javascript" language="javascript"
 	src="<%=request.getContextPath() %>/js/jquery.js"></script>
 <script type="text/javascript" language="javascript"
 	src="<%=request.getContextPath() %>/js/jquery.dataTables.js"></script>
+<script type="text/javascript" language="javascript"
+	src="<%=request.getContextPath() %>/js/jquery.tabify.source.js"></script>	
 <script type="text/javascript" charset="utf-8">
 
 			//console.info("<%=patient%>");
@@ -41,6 +54,7 @@
 			var stateDataSet = <%=states%>;
 			
 			$(document).ready(function() {
+
 				$('#events').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="event_table"></table>' );
 				$('#event_table').dataTable( {
 					"aaData": eventDataSet,
@@ -77,7 +91,9 @@
 								}
 							 }
 					]
-				} );					
+				} );
+
+				$('#menutab').tabify();
 			} );
 		</script>
 </head>
@@ -87,24 +103,23 @@
 		<nav:render group="tabs"/>
 		<h1 align="center">Patient Info:<%=patient%></h1>
 		
-		
-		<table>
-		<tr >
-			<td width="400px;">
-				Clinical Info
+		<ul id="menutab" class="menu">
+			<li class="active"><a href="#clinicalInfo">Clinical Info</a></li>
+			<li><a href="#otherInfo">Other Info</a></li>
+		</ul>
+
+		<div id="clinicalInfo">
+				<h1>Clinical Pathway</h1>
 					<%=clincalPathWay %>
-			</td>
+		</div>
 				
-			<td width="400px;" valign="top">
+		<div id="otherInfo">
 				<h1>Events Received</h1>
 				<div id="events"></div>
 				<div class="spacer"></div>
 				<h1>States</h1>
 				<div id="states"></div>
-			</td>
-		</tr>
-		</table>
-
+		</div>
 
 	</div>
 </body>

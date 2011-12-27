@@ -16,7 +16,7 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop','update'
-            url = "jdbc:mysql://192.168.2.7:3306/GDepot_dev"
+            url = "jdbc:mysql://localhost:3306/PFM_dev"
         }
     }
     test {
