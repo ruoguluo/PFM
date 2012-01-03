@@ -17,17 +17,7 @@
 			
 			<%
 				//println patients
-				def dataSet = [];
-				patients.each({
-					def p = it
-					def states = p.states
-					states.each({
-						//	println it
-						if (it.toString().startsWith("WAIT")){
-							dataSet<<"['${p}','${it}','${it.duration}']"
-						}
-					})
-				})
+
 			%>
 			
 			var aDataSet = <%=dataSet%>
@@ -53,7 +43,7 @@
 			<div class="full_width big">
 				Unit Performance
 			</div>
-			<%=unit %>
+			Unit: <%=unit %>
 			<p></p>			
 			<h1>Performance table</h1>
 			<div id="dynamic"></div>

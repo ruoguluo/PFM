@@ -1,5 +1,7 @@
 package patientflowmonitoring
 
+import java.util.List;
+
 import patientflowmonitoring.PatientState.PatientStateName
 
 class PatientController {
@@ -11,8 +13,25 @@ class PatientController {
 		[action:'getPatientDetails', title:'Patient',order:5]
 	]
 	
-
-	def getPatientMap = {
+	def getPatientRoomMapping = {
+		
+		def retVal = new StringBuffer()
+		retVal.append("[")
+		def patientMap = queryPatientMap()
+		def es = patientMap.entrySet()
+		es.each{
+			retVal.append("{patientId:'${it.key}',roomId:'${it.value}'},")
+		}
+		if (retVal.size()>1){
+			def temp = retVal.substring(0,retVal.size()-1);
+			retVal = new StringBuffer(temp);
+		}
+		retVal.append("]")
+		render(retVal)
+		
+	}
+	
+	def Map queryPatientMap(){
 		
 		def c = Patient.createCriteria()
 		
@@ -29,8 +48,56 @@ class PatientController {
 		
 		println(patientMap)
 		
+		return patientMap
+	}
+	
+
+	def getPatientMap = {
+		
+		def patientMap = queryPatientMap()
+		
 		render(view:"UnitMap1",model:
 			[mapping:patientMap])
+	}
+	
+	def getEventList = {
+		
+		def patientId = params.id
+		Patient patient = Patient.findByPatientID(params.id)
+		List events = patient.events
+		
+		def retVal = new StringBuffer()
+		retVal.append("[")
+		events.each{
+			retVal.append("{event:'${it.eventName}',timeStamp:'${it.timeStamp}'},")
+		}
+		if (retVal.size()>1){
+			def temp = retVal.substring(0,retVal.size()-1);
+			retVal = new StringBuffer(temp);
+		}
+		retVal.append("]")
+		render(retVal)
+		
+	}
+	
+	def getStateList = {
+		
+		def patientId = params.id
+		Patient patient = Patient.findByPatientID(params.id)
+		List states = patient.states
+		
+		def retVal = new StringBuffer()
+		retVal.append("[")
+		states.each{
+			retVal.append("{state:'${it.stateName}',startTime:'${it.startTime}',endTime:'${it.endTime}',duration:'${it.duration}'},")
+		}
+		if (retVal.size()>1){
+			def temp = retVal.substring(0,retVal.size()-1);
+			retVal = new StringBuffer(temp);
+		}
+		retVal.append("]")
+		render(retVal)
+		
 	}
 	
 	def getPatientDetails = {
