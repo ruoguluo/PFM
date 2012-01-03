@@ -16,7 +16,16 @@ abstract class EventHandler {
 	def Patient patient
 	def String patientId
 	
-	def Handle(Map props){
+	def void handle(Map props){
+
+		pre_process(props)
+		process(props)
+		post_process()
+		
+		log.info("~~~event ${event.eventName} is processed~~~")
+	}
+	
+	def void pre_process(props){
 		event = new Event()
 		event.eventAttrs = props
 		event.timeStamp = createTimeStamp(props['timestamp'])
@@ -25,13 +34,11 @@ abstract class EventHandler {
 		if (!patient){
 			patient = new Patient(patientID:patientId)
 		}
-
-		process(props)
-		
+	}
+	
+	def void post_process(){
 		patient.appendEvent(event)
 		patient.save()
-		
-		log.info("~~~event ${event.eventName} is processed~~~")
 	}
 	
 	def abstract process(Map props)

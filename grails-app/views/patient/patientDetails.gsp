@@ -3,23 +3,12 @@
 <head>
 <nav:resources/>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rel="shortcut icon" type="image/ico"
-	href="http://www.datatables.net/media/images/favicon.ico" />
 
 <title>Patient Details</title>
 <style type="text/css" title="currentStyle">
 @import "<%=request.getContextPath() %>/css/demo_page.css";
-
 @import "<%=request.getContextPath() %>/css/demo_table.css";
-</style>
-
-<style type="text/css" media="screen">
-	body { font: 0.8em Arial, sans-serif; }
-	.menu { padding: 0; clear: both; }
-	.menu li { display: inline; }
-	.menu li a { background: #ccf; padding: 10px; float:left; border-right: 1px solid #ccf; border-bottom: none; text-decoration: none; color: #000; font-weight: bold;}
-	.menu li.active a { background: #eef; }
-	.content { float: left; clear: both; border: 1px solid #ccf; border-top: none; border-left: none; background: #eef; padding: 10px 20px 20px; width: 400px; }
+@import "<%=request.getContextPath() %>/css/jQuery_menu.css";
 </style>
 
 
@@ -101,7 +90,7 @@
 
 	<div id="container">
 		<nav:render group="tabs"/>
-		<h1 align="center">Patient Info:<%=patient%></h1>
+		<h1>Patient Info:<%=patient%></h1>
 		
 		<ul id="menutab" class="menu">
 			<li class="active"><a href="#clinicalInfo">Clinical Info</a></li>

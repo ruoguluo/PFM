@@ -1,5 +1,4 @@
-<html>
-  <head>
+
   	<%
 	  	def ah = []
 		for (i in 0..23)
@@ -23,7 +22,7 @@
         data.addColumn('number', 'Arrivals');
         data.addRows(24);
 		<% for (int h=0;h<24;h++){%>
-			data.setValue(<%=h%>, 0, "<%=h%>:00");
+			data.setValue(<%=h%>, 0, "<%=h%>");
 			data.setValue(<%=h%>, 1, <%=ah[h]%>);
 		<% } %>
         
@@ -33,9 +32,5 @@
                          });
       }
     </script>
-  </head>
 
-  <body>
     <div id="chart_arrivals_div"></div>
-  </body>
-</html>

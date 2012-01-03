@@ -8,28 +8,19 @@ import grails.plugin.jms.*
 import patientflowmonitoring.Bed.BedStatus;
 
 
-class MessageService implements ApplicationContextAware{
+class MessageService {
 	// MessageService is listening to the JMS queue
-	
-	def applicationContext
 	
 	def jmsService
 
     static transactional = true
 	static expose = ['jms']
 	
-//	static destination = "PFM_Event"
-//	static listenerCount = 5
-	
 	def patientService
 	def bedService
 	def monitorService
 	def grailsApplication
 	
-	def void setApplicationContext(ApplicationContext appContext){
-		
-	}
-
     def serviceMethod() {
 
     }
@@ -41,7 +32,7 @@ class MessageService implements ApplicationContextAware{
 		def props = processMsg(msg)
 		EventHandler h = ctx.getBean (props['event'].toLowerCase()+"Handler")
 		log.info("h=" + h)
-		h.Handle (props)
+		h.handle (props)
 	}
 	
 	def processMsg(msg){
@@ -53,41 +44,6 @@ class MessageService implements ApplicationContextAware{
 		}
 		return props
 	}
-	
-	
-	
-	
-	
-	
-	@Queue(name='msg.new')
-	def createMessage(msg){
-			def messageInstance = new Message(body:msg)
-			if (messageInstance.save(flash:true)){
-				log.info "Save message: id = {$messageInstance.id}"
-			} else {
-				log.warn 'Could not save message'
-			}
-			
-			def bed = new Bed(bedId:"abcd")		
-			bed.status = BedStatus.EMPTY	
-			if (bed.save(flash:true)){
-				log.info "Save bed: id = {bed.bedId}"
-			} else {
-				log.warn 'Could not save bed'
-			}
-			
-			return null;
-	}
 
-		
-	
-	
-//	void sendMessage(){
-//		sendQueueJMSMessage("PFM_Event",[userId:"rluo", content:"sendingTest"])
-//	}
-	
-//	void onMessage(msg){
-//		//triage messages and call other services
-//	}
 }
 

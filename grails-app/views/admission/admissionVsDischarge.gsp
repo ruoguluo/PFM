@@ -1,5 +1,3 @@
-<html>
-  <head>
   <!--   R:
   	<%=admission.size%>&nbsp;<%=discharge.size%>  --> 
   	<%
@@ -39,7 +37,7 @@
         data.addColumn('number', 'Discharge')
         data.addRows(24);
         <% for (int h=0;h<24;h++){%>
-		data.setValue(<%=h%>, 0, "<%=h%>:00");
+		data.setValue(<%=h%>, 0, "<%=h%>");
 		data.setValue(<%=h%>, 1, <%=ah[h]%>);
 		data.setValue(<%=h%>, 2, <%=dh[h]%>);
 		<% } %>
@@ -50,9 +48,5 @@
                          });
       }
     </script>
-  </head>
 
-  <body>
     <div id="chart_admissionVsDischarge_div"></div>
-  </body>
-</html>
