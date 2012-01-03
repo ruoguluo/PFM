@@ -1,10 +1,8 @@
-dataSource {
-	pooled = false
-	driverClassName = "com.mysql.jdbc.Driver"
-	username = "lrg"
-	password = "lrg"
-	//dialect= "org.hibernate.dialet.Oracle10gDialect"
-	//logSql = true
+CopyOfDataSourceataSource {
+	pooled = true
+	driverClassName = "org.hsqldb.jdbcDriver"
+	username = "sa"
+	password = ""
 }
 hibernate {
 	cache.use_second_level_cache = true
@@ -15,20 +13,20 @@ hibernate {
 environments {
 	development {
 		dataSource {
-			dbCreate = "create" // one of 'create', 'create-drop','update'
-			url = "jdbc:mysql://localhost:3306/PFM_dev"
+			dbCreate = "create-drop" // one of 'create', 'create-drop','update'
+			url = "jdbc:hsqldb:mem:devDB"
 		}
 	}
 	test {
 		dataSource {
 			dbCreate = "update"
-			url = "jdbc:oracle:thin@192.168.2.7:1521:orcl"
+			url = "jdbc:hsqldb:mem:testDb"
 		}
 	}
 	production {
 		dataSource {
 			dbCreate = "update"
-			url = "jdbc:oracle:thin@192.168.2.7:1521:orcl"
+			url = "jdbc:hsqldb:file:prodDb;shutdown=true"
 		}
 	}
 }
