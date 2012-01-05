@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      
+<%
+	def patients = [];
+	def patientList = mapping.values().toList();
+	patientList.each({
+		patients<<"${it}"
+	})
+	def roomList = mapping.keySet().toList();
+%>      
+      
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<nav:resources/>
@@ -13,37 +23,30 @@
 	</style>
 	<script type="text/javascript" language="javascript" src="<%=request.getContextPath() %>/js/jquery.js"></script>
 	<script type="text/javascript" language="javascript" src="<%=request.getContextPath() %>/js/jquery.dataTables.js"></script>
+	
 	<script type="text/javascript" charset="utf-8">
 	
-	
-	<%
-		def patients = [];
-		def patientList = mapping.values().toList();
-		patientList.each({
-			patients<<"['${it}']"
-		})
-		def roomList = mapping.keySet().toList();
-	%>
-	//console.info("<%=patients%>")
-	var aDataSet = <%=patients%>;
+	console.info("<%=patients%>")
+	//var aDataSet = <%=patients%>;
 	
 	$(document).ready(function() {
-		$('#dynamic').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="example"></table>' );
+
+		//$('#dynamic').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="example"></table>' );
 		$('#example').dataTable( {
 	        "bPaginate": false,
 	        "bLengthChange": false,
 	        "bFilter": false,
 	        "bSort": false,
 	        "bInfo": false,
-	        "bAutoWidth": false,
-			"aaData": aDataSet,
-			"aoColumns": [
-				{ "sTitle": "Patient ID", "sClass": "center",
-					"fnRender":function(oObj){
-						return "<a href='getPatientDetails/"+oObj.aData[0]+"'>"+oObj.aData[0]+"</a>";
-					}
-				}
-			]
+	        "bAutoWidth": false
+			//"aaData": aDataSet,
+			//"aoColumns": [
+			//	{ "sTitle": "Patient ID", "sClass": "center",
+			//		"fnRender":function(oObj){
+			//			return "<a href='getPatientDetails/"+oObj.aData[0]+"'>"+oObj.aData[0]+"</a>";
+			//		}
+			//	}
+			//]
 		} );
 		
 		var map_top = $('#map').offset().top;
@@ -103,9 +106,10 @@
 		//alert('clicked');
 		window.location="../unit/showUnitPerformance/ED"
 	}
-	
+
+
 	</script>
-	
+
 </head>
 
 <body id="dt_example">
@@ -113,13 +117,28 @@
 <nav:render group="tabs"/>
 <h1>OSLER Unit Map</h1>
 
-
 <table border="1" style="width: 100%">
   <tbody>
     <tr>
       <td width="200" valign="top">
       <div align="center"><h2>Patient List</h2></div>
-		<div id="dynamic"></div>
+		<div id="dynamic">
+			<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+			<thead>
+				<tr>
+					<th>Patient Id</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%p=0%>
+				<g:while test="${p < patients?.size}">
+					<% def css=session.patient?.patientID==patients[p]?"selected":""  %>
+					<tr class="<%=css%>"><td class="center"><a href="getPatientDetails/<%=patients[p] %>"><%=patients[p] %></a></td></tr>
+					<%p++%>
+				</g:while>
+			</tbody>
+			</table>
+		</div>
 		</td>
       <td id="td_map"><img alt="plane1" src="<%=request.getContextPath() %>/images/plane1.png" height="614" width="850" id="map" usemap="#unitmap" border="0"/>
       <img src="<%=request.getContextPath() %>/images/blue_spot.png" id="marker" style="display: none;position: absolute;" title="marker"/></td>
