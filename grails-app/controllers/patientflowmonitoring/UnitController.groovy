@@ -23,9 +23,9 @@ class UnitController {
 				//	println it
 				if (it.toString().startsWith("WAIT")){
 					List temp = []
-					temp<<"'${p}'"
-					temp<<"'${it}'"
-					temp<<"'${it.duration}'"
+					temp<<"\"${p}\""
+					temp<<"\"${it}\""
+					temp<<"\"${it.duration}\""
 					dataSet<<temp
 					//dataSet<<"['${p}','${it}','${it.duration}']"
 				}
