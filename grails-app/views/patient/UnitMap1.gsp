@@ -42,7 +42,7 @@
 					"fnRender":function(oObj){
 						return "<a href='getPatientDetails/"+oObj.aData[0]+"'>"+oObj.aData[0]+"</a>";
 					}
-				},
+				}
 			]
 		} );
 		
