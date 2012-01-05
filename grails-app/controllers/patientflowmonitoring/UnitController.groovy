@@ -2,6 +2,8 @@ package patientflowmonitoring
 
 class UnitController {
 	
+	def scaffold = true
+	
 	static navigation = [
 		[group:'tabs',action:'showUnitPerformance', title:"Report",order:10],
 	]
