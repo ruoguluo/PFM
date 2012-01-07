@@ -24,6 +24,7 @@ file.eachLine{line->
 %>
 
 <html>
+<nav:resources/>
 <g:javascript library="jquery" plugin="jquery"/>
 <script>
 $.ajaxSetup ({
@@ -94,7 +95,7 @@ $(document).ready(function() {
 
 </script>
 <body>
-
+<div><nav:render group="tabs"/></div>
 <h1>Message List</h1>
 <div align="right">
 Select a test case:</br>

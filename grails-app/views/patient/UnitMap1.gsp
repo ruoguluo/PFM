@@ -4,11 +4,18 @@
       
 <%
 	def patients = [];
+	def patientLocations = [];
 	def patientList = mapping.values().toList();
-	patientList.each({
-		patients<<"${it}"
+	mapping.entrySet().each({
+		patients<<"${it.value}"
+		patientLocations<<"${it.key}"
 	})
+	
+	
 	def roomList = mapping.keySet().toList();
+	//roomList.each({
+	//	patients<<"${it}"	
+	//})
 %>      
       
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,7 +39,7 @@
 	$(document).ready(function() {
 
 		//$('#dynamic').html( '<table cellpadding="0" cellspacing="0" border="0" class="display" id="example"></table>' );
-		$('#example').dataTable( {
+		$('#patients').dataTable( {
 	        "bPaginate": false,
 	        "bLengthChange": false,
 	        "bFilter": false,
@@ -102,11 +109,10 @@
 			'CCU1':{'top':245,'left':480},
 			'CCU2':{'top':240,'left':535}};
 
-	function ed_click(){
+	function unit_click(unit){
 		//alert('clicked');
-		window.location="../unit/showUnitPerformance/ED"
+		window.location="../unit/showUnitPerformance/"+unit;
 	}
-
 
 	</script>
 
@@ -121,33 +127,55 @@
   <tbody>
     <tr>
       <td width="200" valign="top">
-      <div align="center"><h2>Patient List</h2></div>
 		<div id="dynamic">
-			<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+
+			<table cellpadding="0" cellspacing="0" border="0" class="display" id="units">
 			<thead>
 				<tr>
-					<th>Patient Id</th>
+					<th>Units</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%p=0%>
+				<g:while test="${p < unitIds?.size}">
+					<% def css=session.unitSelected==unitIds[p]?"selected":""  %>
+					<tr class="<%=css%>"><td class="center"><a href="<%=request.getContextPath() %>/unit/showUnitPerformance/<%=unitIds[p] %>"><%=unitIds[p] %></a></td></tr>
+					<%p++%>
+				</g:while>
+			</tbody>
+			</table>
+			
+			<table cellpadding="0" cellspacing="0" border="0" class="display" id="patients">
+			<thead>
+				<tr>
+					<th>Patients</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%p=0%>
 				<g:while test="${p < patients?.size}">
 					<% def css=session.patient?.patientID==patients[p]?"selected":""  %>
-					<tr class="<%=css%>"><td class="center"><a href="getPatientDetails/<%=patients[p] %>"><%=patients[p] %></a></td></tr>
+					<tr class="<%=css%>"><td class="center">
+						<a href="getPatientDetails/<%=patients[p] %>"><%=patients[p] %></a>
+						<br/>
+						<font size=1 color=grey><b><%=patientLocations[p] %></b></font>
+					
+					</td></tr>
 					<%p++%>
 				</g:while>
 			</tbody>
 			</table>
 		</div>
 		</td>
-      <td id="td_map"><img alt="plane1" src="<%=request.getContextPath() %>/images/plane1.png" height="614" width="850" id="map" usemap="#unitmap" border="0"/>
+      <td id="td_map"><img alt="plane1" src="<%=request.getContextPath() %>/images/plan1.png" height="614" width="850" id="map" usemap="#unitmap" border="0"/>
       <img src="<%=request.getContextPath() %>/images/blue_spot.png" id="marker" style="display: none;position: absolute;" title="marker"/></td>
     </tr>
   </tbody>
 </table>
 
 <map name="unitmap">
-	<area shape="poly" coords="80,185,360,155,400,500,80,545" onClick="javascript:ed_click()" title="ED Unit Area" /> 
+	<area shape="poly" coords="80,185,360,155,400,500,80,545" onClick="javascript:unit_click('ED')" title="ED Unit Area" /> 
+	<area shape="poly" coords="441,147,715,112,820,447,502,488" onClick="javascript:unit_click('CCU')" title="CCU Unit Area" /> 
 </map>
 
 </div>

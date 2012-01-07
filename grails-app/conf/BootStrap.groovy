@@ -18,12 +18,21 @@ class BootStrap {
     }
 	
 	def createUnits() {
-		def room = new Room()
-		room.roomId = "2012"
-		room.save()
-		def unit = new Unit()
-		unit.unitId = "ED"
-		unit.rooms.add(room)
-		unit.save()
+		def room1 = new Room()
+		room1.roomId = "2012"
+		room1.save()
+		def unit1 = new Unit()
+		unit1.unitId = "ED"
+		unit1.rooms.add(room1)
+		unit1.save()
+		
+		def room2 = new Room()
+		room2.roomId = "2052"
+		room2.save()
+		def unit2 = new Unit()
+		unit2.unitId = "CCU"
+		unit2.rooms.add(room2)
+		unit2.save()
+		
 	}
 }

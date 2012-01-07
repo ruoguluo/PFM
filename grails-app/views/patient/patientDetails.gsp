@@ -90,7 +90,7 @@
 
 	<div id="container">
 		<nav:render group="tabs"/>
-		<h1>Patient Info:<%=patient%></h1>
+		<h1>Patient Info:<%=patient%> &nbsp; Room: <%=patient.roomID %></h1>
 		
 		<ul id="menutab" class="menu">
 			<li class="active"><a href="#clinicalInfo">Clinical Info</a></li>

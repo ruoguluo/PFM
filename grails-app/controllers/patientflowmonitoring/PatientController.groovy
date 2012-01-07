@@ -1,12 +1,14 @@
 package patientflowmonitoring
 
 import java.util.List;
-
+import grails.converters.*
 import patientflowmonitoring.PatientState.PatientStateName
 
 class PatientController {
 	
 	def scaffold = true
+	def unitService
+	def patientService
 	
 	static navigation = [
 		[group:'tabs',action:'getPatientMap', title:'Unit',order:0],
@@ -17,47 +19,26 @@ class PatientController {
 		
 		def retVal = new StringBuffer()
 		retVal.append("[")
-		def patientMap = queryPatientMap()
+		def patientMap = patientService.queryPatientMap()
 		def es = patientMap.entrySet()
 		es.each{
-			retVal.append("{patientId:\"${it.key}\",roomId:\"${it.value}\"},")
+			retVal.append("{\"patientId\":\"${it.value}\",\"roomId\":\"${it.key}\"},")
 		}
 		if (retVal.size()>1){
 			def temp = retVal.substring(0,retVal.size()-1);
 			retVal = new StringBuffer(temp);
 		}
 		retVal.append("]")
-		render(retVal)
+		render(contentType:"application/json",text:retVal)
 		
 	}
 	
-	def Map queryPatientMap(){
-		
-		def c = Patient.createCriteria()
-		
-		def patientList = c.list{
-			notEqual("roomID","")
-		}
-		
-		
-		def patientMap = [:]
-		
-		patientList.each({
-			patientMap[it.roomID]=it.patientID
-		})
-		
-		println(patientMap)
-		
-		return patientMap
-	}
-	
-
 	def getPatientMap = {
 		
-		def patientMap = queryPatientMap()
+		def patientMap = patientService.queryPatientMap()
 		
 		render(view:"UnitMap1",model:
-			[mapping:patientMap])
+			[mapping:patientMap,unitIds:unitService.getUnitIds()])
 	}
 	
 	def getEventList = {
@@ -69,14 +50,14 @@ class PatientController {
 		def retVal = new StringBuffer()
 		retVal.append("[")
 		events.each{
-			retVal.append("{event:\"${it.eventName}\",timeStamp:\"${it.timeStamp}\"},")
+			retVal.append("{\"event\":\"${it.eventName}\",\"timeStamp\":\"${it.timeStamp}\"},")
 		}
 		if (retVal.size()>1){
 			def temp = retVal.substring(0,retVal.size()-1);
 			retVal = new StringBuffer(temp);
 		}
 		retVal.append("]")
-		render(retVal)
+		render(contentType:"application/json",text:retVal)
 		
 	}
 	
@@ -89,14 +70,14 @@ class PatientController {
 		def retVal = new StringBuffer()
 		retVal.append("[")
 		states.each{
-			retVal.append("{state:\"${it.stateName}\",startTime:\"${it.startTime}\",endTime:\"${it.endTime}\",duration:\"${it.duration}\"},")
+			retVal.append("{\"state\":\"${it.stateName}\",\"startTime\":\"${it.startTime}\",\"endTime\":\"${it.endTime}\",\"duration\":\"${it.duration}\"},")
 		}
 		if (retVal.size()>1){
 			def temp = retVal.substring(0,retVal.size()-1);
 			retVal = new StringBuffer(temp);
 		}
 		retVal.append("]")
-		render(retVal)
+		render(contentType:"application/json",text:retVal)
 		
 	}
 	
@@ -122,16 +103,7 @@ class PatientController {
 	
 	def getCurrentPatientsWaitTime = {
 	
-		def patients = Patient.withCriteria(){
-			currentState{
-				or{
-					eq("stateName",PatientStateName.WAIT_FOR_CONSULTATION)
-					eq("stateName",PatientStateName.WAIT_FOR_ORDER_EXECUTION)
-					eq("stateName",PatientStateName.WAIT_FOR_BED)
-					eq("stateName",PatientStateName.WAIT_FOR_TRANSPORT)
-				}
-			}
-		}
+		def patients = patientService.getWaitingPatients()
 
 		render(view:"currentPatientsWaitTime",model:[patients:patients])
 	}

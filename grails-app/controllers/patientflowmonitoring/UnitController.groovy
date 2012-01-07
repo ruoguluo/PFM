@@ -47,14 +47,14 @@ class UnitController {
 		def retVal = new StringBuffer()
 		retVal.append("[")
 		dataSet.each{
-			retVal.append("{patientId:${it[0]},state:${it[1]},duration:${it[2]}},")
+			retVal.append("{\"patientId\":${it[0]},\"state\":${it[1]},\"duration\":${it[2]}},")
 		}
 		if (retVal.size()>1){
 			def temp = retVal.substring(0,retVal.size()-1);
 			retVal = new StringBuffer(temp);
 		}
 		retVal.append("]")
-		render(retVal)
+		render(contentType:"application/json",text:retVal)
 		
 	}
 	
@@ -62,7 +62,13 @@ class UnitController {
 		
 		def unit = params.id
 		if (!unit){
-			unit = "ED"
+			if (!session.unitSelected){
+				unit = "ED"
+			}else{
+				unit = session.unitSelected
+			}
+		}else{
+			session.unitSelected=unit
 		}
 		
 		def dataSet = queryUnitPerformance(unit);
