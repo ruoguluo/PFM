@@ -83,7 +83,12 @@
 					//alert('Marker<%=i%> is clicked');
 					window.location="getPatientDetails/<%=patientList[i]%>";
 					});
+
 				$('#td_map').append(marker<%=i%>);
+				
+				<%	if (patientList[i]==session.patient?.patientID){ %>
+				marker<%=i%>.attr("src","<%=request.getContextPath() %>/images/red_spot.png");
+				<%	} %>
 			<%}%>	
 				//$('#marker').css('left', map_left+100).css('top', map_top+290).show();
 		}
