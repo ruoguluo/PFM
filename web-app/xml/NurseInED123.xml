@@ -1,0 +1,13 @@
+
+<connector xmlns="http://wbe.ibm.com/6.2/Event/NurseInED" name="RTLS" version="6.2">
+  <connector-bundle name="NurseInED" type="Event">
+    <NurseInEDObject>
+      <Nurse_ID type="String">Nurs123</Nurse_ID>
+      <Location_ID type="String">Ass11</Location_ID>
+      <time type="DateTime">2011-12-18T21:18:11Z</time>
+    </NurseInEDObject>
+  </connector-bundle>
+  <system>WIN-U8BMQ67RW9Y</system>
+  <timestamp>2011-12-18T21:18:11Z</timestamp>
+  <loginfo>Test values from WebSphere Business Events:Design Data</loginfo>
+</connector>

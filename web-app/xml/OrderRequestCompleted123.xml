@@ -1,0 +1,15 @@
+
+<connector xmlns="http://wbe.ibm.com/6.2/Event/OrderRequestCompleted" name="WFM" version="6.2">
+  <connector-bundle name="OrderRequestCompleted" type="Event">
+    <OrderRequestCompletedObject>
+      <Patient_ID type="String">Pat123</Patient_ID>
+      <Nurse_ID type="String">Nurs123</Nurse_ID>
+      <Order_ID type="String">Order1</Order_ID>
+      <Order_Type type="String">ECG</Order_Type>
+      <time type="DateTime">2011-12-18T21:23:00Z</time>
+    </OrderRequestCompletedObject>
+  </connector-bundle>
+  <system>WIN-U8BMQ67RW9Y</system>
+  <timestamp>2011-12-18T21:23:00Z</timestamp>
+  <loginfo>Test values from WebSphere Business Events:Design Data</loginfo>
+</connector>

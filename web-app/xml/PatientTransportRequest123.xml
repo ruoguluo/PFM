@@ -1,0 +1,14 @@
+
+<connector xmlns="http://wbe.ibm.com/6.2/Event/PatientTransportRequest" name="WFM" version="6.2">
+  <connector-bundle name="PatientTransportRequest" type="Event">
+    <PatientTransportRequestObject>
+      <Patient_ID type="String">Pat123</Patient_ID>
+      <Transport_ID type="String">Trans123</Transport_ID>
+      <Unit_ID type="String">CCU</Unit_ID>
+      <time type="DateTime">2011-12-18T22:15:36Z</time>
+    </PatientTransportRequestObject>
+  </connector-bundle>
+  <system>WIN-U8BMQ67RW9Y</system>
+  <timestamp>2011-12-18T22:15:36Z</timestamp>
+  <loginfo>Test values from WebSphere Business Events:Design Data</loginfo>
+</connector>

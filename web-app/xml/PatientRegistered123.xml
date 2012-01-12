@@ -1,0 +1,14 @@
+
+<connector xmlns="http://wbe.ibm.com/6.2/Event/PatientRegistered" name="WFM" version="6.2">
+  <connector-bundle name="PatientRegistered" type="Event">
+    <PatientRegisteredObject>
+      <Patient_ID type="String">Pat123</Patient_ID>
+      <Tag_ID type="String">Tag123</Tag_ID>
+      <Room_ID type="String">Room11</Room_ID>
+      <time type="DateTime">2011-12-17T20:56:53Z</time>
+    </PatientRegisteredObject>
+  </connector-bundle>
+  <system>WIN-U8BMQ67RW9Y</system>
+  <timestamp>2011-12-17T20:56:53Z</timestamp>
+  <loginfo>Test values from WebSphere Business Events:Design Data</loginfo>
+</connector>

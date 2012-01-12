@@ -1,0 +1,14 @@
+
+<connector xmlns="http://wbe.ibm.com/6.2/Event/BedRequest" name="WFM" version="6.2">
+  <connector-bundle name="BedRequest" type="Event">
+    <BedRequestobject>
+      <Patient_ID type="String">Pat123</Patient_ID>
+      <Physician_ID type="String">Phy123</Physician_ID>
+      <Unit_ID type="String">CCU</Unit_ID>
+      <time type="DateTime">2011-12-18T21:48:40Z</time>
+    </BedRequestobject>
+  </connector-bundle>
+  <system>WIN-U8BMQ67RW9Y</system>
+  <timestamp>2011-12-18T21:48:40Z</timestamp>
+  <loginfo>Test values from WebSphere Business Events:Design Data</loginfo>
+</connector>

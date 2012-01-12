@@ -6,19 +6,27 @@ import patientflowmonitoring.Statistics;
 class ArrivalController {
 	def scaffold = true
 	
-	def getTodayArrivals = {
-		def arrivals = [:]
-		def Date today = new Date()
-		def dayTag = Statistics.createDayTag(today)
+	def getHourlyArrival(def dayTag) {
 		
 		def c = Arrival.createCriteria()
-		def results = c {
+		def result = c {
 			projections {
 				groupProperty("hour")
 				rowCount()
 			}
 			order("hour")
 		}
-		render(view:"todayArrivalsByHour", model:[mapping:results])
+		
+		return result
+	}
+	
+	def getTodayArrivals = {
+		def arrivals = [:]
+		def Date today = new Date()
+		def dayTag = Statistics.createDayTag(today)
+		
+		def hourlyArrivals = getHourlyArrival(dayTag)
+
+		render(view:"todayArrivalsByHour", model:[mapping:hourlyArrivals])
 	}
 }
