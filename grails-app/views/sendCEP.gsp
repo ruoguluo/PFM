@@ -30,6 +30,7 @@ function loadTestCase(fileName){
 var changeTestCase=function(){
 	//alert(this.selectedIndex);
 	$('#body').val(fileContents[this.selectedIndex]);
+	$('#loaded').hide();
 }
 
 $(document).ready(function() {
@@ -41,6 +42,27 @@ fileContents.push(<%=it%>);
 }
 %>	
 $('#testCase').change(changeTestCase);
+
+$('#loadingDiv')
+.hide()  // hide it initially
+.ajaxStart(function() {
+    $(this).show();
+})
+.ajaxStop(function() {
+    $(this).hide();
+})
+;
+
+$('#loaded')
+.hide()  // hide it initially
+.ajaxStart(function() {
+    $(this).hide();
+})
+.ajaxStop(function() {
+    $(this).show();
+})
+
+
 })
 </script>
 <html>
@@ -48,7 +70,12 @@ $('#testCase').change(changeTestCase);
 <body>
 
 <p>send CEP event</p>
+<p>
 <g:select from="${files}" name="testCase" value="${fileName}"/>
+<div id="loadingDiv"><img src="<%=request.getContextPath() %>/images/spinner.gif"/></div>
+<div id="loaded">Sent</div>
+</p>
+
    <g:form>
    
    <textarea name="body" id="body" rows="15" cols="60">

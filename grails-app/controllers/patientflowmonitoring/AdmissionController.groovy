@@ -38,6 +38,14 @@ class AdmissionController {
 			retVal = new StringBuffer(temp);
 		}
 		retVal.append("]")
+		//render(contentType:"application/json",text:retVal)
+		return retVal
+	}
+	
+	def hourlyAdmissionDischarge = {
+		def admission = hourlyAdmission()
+		def discharge = hourlyDischarge()
+		def retVal = "{\"hourlyAdmission\":${admission},\"hourlyDischarge\":${discharge}}"
 		render(contentType:"application/json",text:retVal)
 	}
 	
@@ -57,8 +65,8 @@ class AdmissionController {
 			retVal = new StringBuffer(temp);
 		}
 		retVal.append("]")
-		render(contentType:"application/json",text:retVal)
-		
+		//render(contentType:"application/json",text:retVal)
+		return retVal
 	}
 	
 	def getHourlyDischarge (def dayTag){
