@@ -33,7 +33,7 @@
 	
 	<script type="text/javascript" charset="utf-8">
 	
-	console.info("<%=patients%>")
+	//console.info("<%=patients%>");
 	//var aDataSet = <%=patients%>;
 	
 	$(document).ready(function() {
@@ -112,7 +112,8 @@
 			'ED12':{'top':468,'left':367},
 			
 			'CCU1':{'top':245,'left':480},
-			'CCU2':{'top':240,'left':535}};
+			'CCU2':{'top':240,'left':535}
+			};
 
 	function unit_click(unit){
 		//alert('clicked');
