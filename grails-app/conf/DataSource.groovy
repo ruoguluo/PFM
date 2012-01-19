@@ -1,8 +1,8 @@
-CopyOfDataSourceataSource {
-	pooled = true
-	driverClassName = "org.hsqldb.jdbcDriver"
-	username = "sa"
-	password = ""
+dataSource {
+	pooled = false
+	driverClassName = "com.mysql.jdbc.Driver"
+	username = "pfm"
+	password = "pfm"
 }
 hibernate {
 	cache.use_second_level_cache = true
@@ -13,20 +13,24 @@ hibernate {
 environments {
 	development {
 		dataSource {
+			pooled = true
+			driverClassName = "org.hsqldb.jdbcDriver"
+			username = "sa"
+			password = ""
 			dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-			url = "jdbc:hsqldb:mem:devDB"
+            url = "jdbc:hsqldb:mem:devDB"
 		}
 	}
 	test {
 		dataSource {
 			dbCreate = "update"
-			url = "jdbc:hsqldb:mem:testDb"
+			url = "jdbc:mysql://localhost:3306/PFM"
 		}
 	}
 	production {
 		dataSource {
 			dbCreate = "update"
-			url = "jdbc:hsqldb:file:prodDb;shutdown=true"
+			url = "jdbc:mysql://localhost:3306/PFM"
 		}
 	}
 }
